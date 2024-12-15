@@ -29,7 +29,8 @@ const Index = () => {
       description: "Built a Web3 application with MetaMask authentication, PostgreSQL backend, and Ethereum smart contracts for secure, decentralized operations.",
       technologies: ["Ethereum", "PostgreSQL", "MetaMask", "Smart Contracts"],
       imageUrl: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0",
-      codeUrl: "https://github.com/example/web3-project",
+      codeUrl: "https://github.com/Zach-hammad/CS375-Project",
+      demoUrl: "https://github.com/Zach-hammad/CS375-Project"
     },
   ];
 
