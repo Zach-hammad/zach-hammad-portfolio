@@ -19,7 +19,7 @@ const ProjectCard = ({
   codeUrl,
 }: ProjectCardProps) => {
   return (
-    <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300 animate-slide-up">
+    <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300 animate-slide-up bg-card">
       <div className="aspect-video overflow-hidden">
         <img
           src={imageUrl}
@@ -28,13 +28,13 @@ const ProjectCard = ({
         />
       </div>
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-primary-dark mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <h3 className="text-2xl font-bold text-foreground mb-2">{title}</h3>
+        <p className="text-muted-foreground mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 bg-primary-light text-primary rounded-full text-sm"
+              className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
             >
               {tech}
             </span>
@@ -46,7 +46,7 @@ const ProjectCard = ({
               href={demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
+              className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
             >
               <ExternalLink size={16} />
               Live Demo
@@ -57,7 +57,7 @@ const ProjectCard = ({
               href={codeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
+              className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
             >
               <Github size={16} />
               View Code
