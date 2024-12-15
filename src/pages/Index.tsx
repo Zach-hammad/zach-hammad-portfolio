@@ -49,7 +49,7 @@ const Index = () => {
       </button>
 
       {/* Hero Section */}
-      <div className="bg-primary/5 py-20 px-4">
+      <div className="bg-primary-dark/5 dark:bg-primary-dark py-20 px-4">
         <div className="container max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-slide-up">
             My Academic Projects Portfolio

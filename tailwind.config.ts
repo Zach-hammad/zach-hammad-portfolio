@@ -27,7 +27,7 @@ export default {
 				primary: {
 					DEFAULT: '#8B5CF6',
 					light: '#E5DEFF',
-					dark: '#1A1F2C',
+					dark: '#000000',
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
