@@ -24,7 +24,7 @@ const Index = () => {
       title: "MLB Data Science Project",
       description: "Developed predictive models using MLB API and web scraping, analyzing player performance trends and creating algorithms for game and season predictions.",
       technologies: ["Python", "Machine Learning", "Web Scraping", "Statistical Analysis"],
-      imageUrl: "https://images.unsplash.com/photo-1508802244473-4e46d606e024",
+      imageUrl: "https://images.unsplash.com/photo-1569076874277-170a9a4a4ae7",
     },
     {
       title: "Web3 Development Project",
