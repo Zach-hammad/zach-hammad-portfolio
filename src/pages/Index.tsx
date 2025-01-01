@@ -11,6 +11,7 @@ const Index = () => {
       description: "Advanced implementation of a RISC-V CPU featuring branch prediction, cache management, out-of-order execution, and PC-signature hit predictor. Evolved from single-cycle to fully pipelined architecture.",
       technologies: ["C", "RISC-V", "Pipeline Architecture", "Branch Prediction"],
       imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      codeUrl: "https://github.com/Zach-hammad/RISC-V",
     },
     {
       title: "Hack CPU Development",
