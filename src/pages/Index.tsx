@@ -18,7 +18,8 @@ const Index = () => {
       description: "Implementation of a Hack CPU using C programming, featuring address translations, VM translators, ALU, program counter, and memory control systems.",
       technologies: ["C", "Hardware Design", "Memory Management", "CPU Architecture"],
       imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-      codeUrl: "https://github.com/Zach-hammad/Hack-CPU",
+      codeUrl: "https://github.com/Zach-hammad/HACK-CPU-Project
+",
     },
     {
       title: "MLB Data Science Project",
