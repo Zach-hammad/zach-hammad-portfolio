@@ -24,8 +24,7 @@ const Index = () => {
       title: "MLB Data Science Project",
       description: "Developed predictive models using MLB API and web scraping, analyzing player performance trends and creating algorithms for game and season predictions.",
       technologies: ["Python", "Machine Learning", "Web Scraping", "Statistical Analysis"],
-      imageUrl: "https://images.unsplash.com/photo-1569076874277-170a9a4a4ae7",
-      demoUrl: "https://csblackjack.fly.dev/",
+      imageUrl: "https://plus.unsplash.com/premium_photo-1664304792767-f7ebe9bc18da?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWxifGVufDB8fDB8fHww",
     },
     {
       title: "Web3 Development Project",
@@ -33,7 +32,7 @@ const Index = () => {
       technologies: ["Ethereum", "PostgreSQL", "MetaMask", "Smart Contracts"],
       imageUrl: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0",
       codeUrl: "https://github.com/Zach-hammad/CS375-Project",
-      demoUrl: "https://github.com/Zach-hammad/CS375-Project"
+      demoUrl: "https://csblackjack.fly.dev/"
     },
   ];
 
