@@ -25,6 +25,7 @@ const Index = () => {
       description: "Developed predictive models using MLB API and web scraping, analyzing player performance trends and creating algorithms for game and season predictions.",
       technologies: ["Python", "Machine Learning", "Web Scraping", "Statistical Analysis"],
       imageUrl: "https://images.unsplash.com/photo-1569076874277-170a9a4a4ae7",
+      demoUrl: "https://csblackjack.fly.dev/",
     },
     {
       title: "Web3 Development Project",
