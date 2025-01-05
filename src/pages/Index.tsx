@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/ProjectCard";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Plus } from "lucide-react";
+import { Moon, Sun, Plus, GraduationCap, Users, Globe, Camera, Chess } from "lucide-react";
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
@@ -69,6 +69,104 @@ const Index = () => {
             A showcase of my technical projects developed during my academic journey,
             featuring CPU architecture, data science, and web development work.
           </p>
+        </div>
+      </div>
+
+      {/* About Me Section */}
+      <div className="py-16 px-4 bg-secondary/30">
+        <div className="container max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">About Me</h2>
+          
+          {/* Education */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-primary">
+                <GraduationCap className="h-6 w-6" />
+                <h3 className="text-xl font-semibold">Education</h3>
+              </div>
+              <p className="text-muted-foreground">
+                I'm Zach Hammad, a Computer Engineering student at Drexel University, 
+                set to graduate in June 2025. My academic journey has equipped me with 
+                strong foundations in both hardware and software development.
+              </p>
+            </div>
+            <div className="bg-card rounded-lg overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+                alt="Education"
+                className="w-full h-48 object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Brazilian Jiu Jitsu */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-card rounded-lg overflow-hidden md:order-2">
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+                alt="Brazilian Jiu Jitsu"
+                className="w-full h-48 object-cover"
+              />
+            </div>
+            <div className="space-y-4 md:order-1">
+              <div className="flex items-center gap-2 text-primary">
+                <Users className="h-6 w-6" />
+                <h3 className="text-xl font-semibold">Brazilian Jiu Jitsu</h3>
+              </div>
+              <p className="text-muted-foreground">
+                Beyond academics, I'm deeply involved in Brazilian Jiu Jitsu, where I not 
+                only practice but also help teach the kids' class. This experience has taught 
+                me valuable lessons in discipline, patience, and the importance of mentoring others.
+              </p>
+            </div>
+          </div>
+
+          {/* Chess */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-primary">
+                <Chess className="h-6 w-6" />
+                <h3 className="text-xl font-semibold">Chess Champion</h3>
+              </div>
+              <p className="text-muted-foreground">
+                I'm proud to have been part of a championship-winning chess team that secured 
+                both state and national titles. Chess has sharpened my strategic thinking and 
+                problem-solving abilities, skills that translate well into my engineering work.
+              </p>
+            </div>
+            <div className="bg-card rounded-lg overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+                alt="Chess"
+                className="w-full h-48 object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Hobbies */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-card rounded-lg overflow-hidden md:order-2">
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+                alt="Traveling and Photography"
+                className="w-full h-48 object-cover"
+              />
+            </div>
+            <div className="space-y-4 md:order-1">
+              <div className="flex items-center gap-2 text-primary">
+                <div className="flex gap-2">
+                  <Globe className="h-6 w-6" />
+                  <Camera className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold">Traveling & Photography</h3>
+              </div>
+              <p className="text-muted-foreground">
+                My passion for traveling and photography allows me to explore different 
+                cultures and capture unique moments. These experiences have broadened my 
+                perspective and enhanced my creative approach to problem-solving in engineering.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
