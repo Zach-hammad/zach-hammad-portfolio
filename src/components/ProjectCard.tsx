@@ -8,6 +8,8 @@ interface ProjectCardProps {
   imageUrl: string;
   demoUrl?: string;
   codeUrl?: string;
+  comingSoon?: boolean;
+  icon?: React.ReactNode;
 }
 
 const ProjectCard = ({
@@ -17,15 +19,22 @@ const ProjectCard = ({
   imageUrl,
   demoUrl,
   codeUrl,
+  comingSoon,
+  icon,
 }: ProjectCardProps) => {
   return (
     <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300 animate-slide-up bg-card">
-      <div className="aspect-video overflow-hidden">
+      <div className="aspect-video overflow-hidden relative">
         <img
           src={imageUrl}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
+        {comingSoon && (
+          <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+            More to Come {icon}
+          </div>
+        )}
       </div>
       <div className="p-6">
         <h3 className="text-2xl font-bold text-foreground mb-2">{title}</h3>

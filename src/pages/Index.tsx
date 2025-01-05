@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/ProjectCard";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Plus } from "lucide-react";
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
@@ -34,6 +34,14 @@ const Index = () => {
       codeUrl: "https://github.com/Zach-hammad/CS375-Project",
       demoUrl: "https://csblackjack.fly.dev/"
     },
+    {
+      title: "Assembly Projects Collection",
+      description: "A growing collection of assembly language projects showcasing low-level programming skills and hardware interaction. More projects coming soon!",
+      technologies: ["Assembly", "Low-level Programming", "Hardware Integration"],
+      imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      codeUrl: "https://github.com/Zach-hammad/Assembly-Projects",
+      comingSoon: true
+    }
   ];
 
   return (
@@ -68,7 +76,11 @@ const Index = () => {
       <div className="container max-w-6xl mx-auto py-16 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+            <ProjectCard 
+              key={index} 
+              {...project} 
+              icon={project.comingSoon ? <Plus className="h-5 w-5" /> : undefined}
+            />
           ))}
         </div>
       </div>
