@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/ProjectCard";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Plus, GraduationCap, Users, Globe, Camera, ChessKing } from "lucide-react";
+import { Moon, Sun, Plus, GraduationCap, Users, Globe, Camera, Crown } from "lucide-react";
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
@@ -125,7 +125,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="space-y-4">
               <div className="flex items-center gap-2 text-primary">
-                <ChessKing className="h-6 w-6" />
+                <Crown className="h-6 w-6" />
                 <h3 className="text-xl font-semibold">Chess Champion</h3>
               </div>
               <p className="text-muted-foreground">
