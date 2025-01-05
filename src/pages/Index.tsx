@@ -110,11 +110,28 @@ const Index = () => {
           {/* Hobbies */}
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-card rounded-lg overflow-hidden md:order-2">
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-                alt="Traveling and Photography"
-                className="w-full h-48 object-cover"
-              />
+              <div className="grid grid-cols-2 gap-2 p-4">
+                <img 
+                  src="/lovable-uploads/a158a666-15c0-46df-b705-d2fc0d429317.png"
+                  alt="Coastal View"
+                  className="w-full h-40 object-cover rounded-lg"
+                />
+                <img 
+                  src="/lovable-uploads/6e7ede49-e35c-4afb-8d4d-bb5f2fb97d2f.png"
+                  alt="Grand Canyon"
+                  className="w-full h-40 object-cover rounded-lg"
+                />
+                <img 
+                  src="/lovable-uploads/2077d59a-3014-4e05-b8d1-499936f71ba1.png"
+                  alt="Library"
+                  className="w-full h-40 object-cover rounded-lg"
+                />
+                <img 
+                  src="/lovable-uploads/46157ab5-592f-45b0-9333-a9b23bd8a892.png"
+                  alt="Paris"
+                  className="w-full h-40 object-cover rounded-lg"
+                />
+              </div>
             </div>
             <div className="space-y-4 md:order-1">
               <div className="flex items-center gap-2 text-primary">
