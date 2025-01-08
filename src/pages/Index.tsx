@@ -5,6 +5,7 @@ import EducationSection from "@/components/EducationSection";
 import BJJSection from "@/components/BJJSection";
 import ChessSection from "@/components/ChessSection";
 import PhotoGallery from "@/components/PhotoGallery";
+import TravelGallery from "@/components/TravelGallery";
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
@@ -29,11 +30,12 @@ const Index = () => {
 
       {/* About Me Section */}
       <div className="py-16 px-4 bg-secondary/30">
-        <div className="container max-w-4xl mx-auto">
+        <div className="container max-w-4xl mx-auto space-y-16">
           <EducationSection />
           <BJJSection />
           <ChessSection />
           <PhotoGallery />
+          <TravelGallery />
         </div>
       </div>
     </div>
