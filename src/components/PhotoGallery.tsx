@@ -7,23 +7,26 @@ import {
 } from "@/components/ui/carousel";
 import { Globe, Camera } from "lucide-react";
 
-// This will be replaced with actual Instagram photos once API integration is set up
-const PLACEHOLDER_PHOTOS = [
+const BJJ_PHOTOS = [
   {
-    src: "/lovable-uploads/a158a666-15c0-46df-b705-d2fc0d429317.png",
-    alt: "Coastal View"
+    src: "/lovable-uploads/1fd42820-74ec-4745-bfa9-e2824c435112.png",
+    alt: "BJJ Training Session 1"
   },
   {
-    src: "/lovable-uploads/6e7ede49-e35c-4afb-8d4d-bb5f2fb97d2f.png",
-    alt: "Grand Canyon"
+    src: "/lovable-uploads/84fa6c16-d68d-4ff1-916f-114a70c05331.png",
+    alt: "BJJ Training Session 2"
   },
   {
-    src: "/lovable-uploads/2077d59a-3014-4e05-b8d1-499936f71ba1.png",
-    alt: "Library"
+    src: "/lovable-uploads/403795dc-4411-4ae0-afb2-65de504c390f.png",
+    alt: "BJJ Group Photo"
   },
   {
-    src: "/lovable-uploads/46157ab5-592f-45b0-9333-a9b23bd8a892.png",
-    alt: "Paris"
+    src: "/lovable-uploads/6325b319-ba18-43a2-9a41-04143fbaff5c.png",
+    alt: "BJJ Training Session 3"
+  },
+  {
+    src: "/lovable-uploads/3f848bb8-007a-4deb-99a5-1bbb0272b133.png",
+    alt: "BJJ Group Photo with Students"
   }
 ];
 
@@ -33,12 +36,12 @@ const PhotoGallery = () => {
       <div className="bg-card rounded-lg overflow-hidden md:order-2 p-6">
         <Carousel className="w-full">
           <CarouselContent>
-            {PLACEHOLDER_PHOTOS.map((photo, index) => (
+            {BJJ_PHOTOS.map((photo, index) => (
               <CarouselItem key={index}>
                 <img 
                   src={photo.src}
                   alt={photo.alt}
-                  className="w-full h-[300px] object-cover rounded-lg"
+                  className="w-full h-[400px] object-cover rounded-lg"
                 />
               </CarouselItem>
             ))}
@@ -53,12 +56,12 @@ const PhotoGallery = () => {
             <Globe className="h-6 w-6" />
             <Camera className="h-6 w-6" />
           </div>
-          <h3 className="text-xl font-semibold">Traveling & Photography</h3>
+          <h3 className="text-xl font-semibold">BJJ Journey</h3>
         </div>
         <p className="text-muted-foreground">
-          My passion for traveling and photography allows me to explore different 
-          cultures and capture unique moments. These experiences have broadened my 
-          perspective and enhanced my creative approach to problem-solving in engineering.
+          A collection of moments from my Brazilian Jiu-Jitsu training at Essential BJJ. 
+          These photos capture various aspects of my journey, from training sessions to 
+          community gatherings, showcasing the collaborative and challenging nature of the sport.
         </p>
       </div>
     </div>
