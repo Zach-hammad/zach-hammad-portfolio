@@ -4,7 +4,6 @@ import AboutHero from "@/components/AboutHero";
 import EducationSection from "@/components/EducationSection";
 import BJJSection from "@/components/BJJSection";
 import ChessSection from "@/components/ChessSection";
-import PhotoGallery from "@/components/PhotoGallery";
 import TravelGallery from "@/components/TravelGallery";
 
 const Index = () => {
@@ -34,7 +33,6 @@ const Index = () => {
           <EducationSection />
           <BJJSection />
           <ChessSection />
-          <PhotoGallery />
           <TravelGallery />
         </div>
       </div>
