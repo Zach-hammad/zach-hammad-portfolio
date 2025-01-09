@@ -16,7 +16,7 @@ const ChessSection = () => {
       </div>
       <div className="bg-card rounded-lg overflow-hidden border border-border shadow-sm">
         <img 
-          src="/lovable-uploads/84fa6c16-d68d-4ff1-916f-114a70c05331.png"
+          src="https://patch.com/img/cdn20/users/22848544/20190322/124529/styles/raw/public/processed_images/54518853_2113551365349288_5433152407037018112_n-1553272384-4984.jpg"
           alt="Chess team with trophies"
           className="w-full h-48 object-cover object-center"
         />
