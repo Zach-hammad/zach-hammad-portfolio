@@ -18,7 +18,7 @@ const ChessSection = () => {
         <img 
           src="/lovable-uploads/b1cef4da-85d0-472d-ba82-0cbf500cc857.png"
           alt="Chess team with trophies"
-          className="w-full h-48 object-cover"
+          className="w-full h-48 object-cover object-center"
         />
       </div>
     </div>

@@ -16,8 +16,8 @@ const EducationSection = () => {
       </div>
       <div className="bg-card rounded-lg overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-          alt="Education"
+          src="/lovable-uploads/e956f62c-f8e9-47e5-a420-2072fd1ce061.png"
+          alt="Drexel University campus"
           className="w-full h-48 object-cover"
         />
       </div>
