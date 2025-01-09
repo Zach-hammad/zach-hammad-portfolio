@@ -14,7 +14,7 @@ const ChessSection = () => {
           problem-solving abilities, skills that translate well into my engineering work.
         </p>
       </div>
-      <div className="bg-card rounded-lg overflow-hidden">
+      <div className="bg-card rounded-lg overflow-hidden border border-border shadow-sm">
         <img 
           src="/lovable-uploads/84fa6c16-d68d-4ff1-916f-114a70c05331.png"
           alt="Chess team with trophies"
