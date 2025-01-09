@@ -16,7 +16,7 @@ const ChessSection = () => {
       </div>
       <div className="bg-card rounded-lg overflow-hidden">
         <img 
-          src="/lovable-uploads/b1cef4da-85d0-472d-ba82-0cbf500cc857.png"
+          src="/lovable-uploads/84fa6c16-d68d-4ff1-916f-114a70c05331.png"
           alt="Chess team with trophies"
           className="w-full h-48 object-cover object-center"
         />
