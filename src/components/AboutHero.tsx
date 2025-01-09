@@ -8,7 +8,7 @@ const AboutHero = () => {
           About Me
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-slide-up mb-6">
-          A Computer Engineering student at Drexel University with diverse interests and achievements.
+        I am a Computer Engineering student at Drexel University, graduating in June 2025. Outside academics, I practice Brazilian Jiu-Jitsu and assist in teaching children’s classes. I am passionate about traveling, photography, and chess, where my team won state and national championships.
         </p>
         <Link 
           to="/projects" 
