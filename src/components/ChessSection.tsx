@@ -18,7 +18,7 @@ const ChessSection = () => {
         <img 
           src="https://patch.com/img/cdn20/users/22848544/20190322/124529/styles/raw/public/processed_images/54518853_2113551365349288_5433152407037018112_n-1553272384-4984.jpg"
           alt="Chess team with trophies"
-          className="w-full h-48 object-cover object-center"
+          className="w-full h-full object-cover object-center object"
         />
       </div>
     </div>
