@@ -33,7 +33,7 @@ const BJJ_PHOTOS = [
 const BJJSection = () => {
   return (
     <div className="space-y-8">
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 gap-8">
         <div className="space-y-4 md:order-1">
           <div className="flex items-center gap-2 text-primary">
             <Users className="h-6 w-6" />
@@ -45,15 +45,15 @@ const BJJSection = () => {
             me valuable lessons in discipline, patience, and the importance of mentoring others.
           </p>
         </div>
-        <div className="bg-card rounded-lg overflow-hidden p-4 md:order-2">
+        <div className="bg-card rounded-lg overflow-hidden md:order-2 p-6">
           <Carousel className="w-full">
             <CarouselContent>
-              {BJJ_PHOTOS.slice(0, 3).map((photo, index) => (
+              {BJJ_PHOTOS.map((photo, index) => (
                 <CarouselItem key={index}>
                   <img 
                     src={photo.src}
                     alt={photo.alt}
-                    className="w-full h-48 object-cover rounded-lg"
+                    className="w-full h-[400px] object-cover rounded-lg"
                   />
                 </CarouselItem>
               ))}
@@ -62,24 +62,6 @@ const BJJSection = () => {
             <CarouselNext />
           </Carousel>
         </div>
-      </div>
-
-      <div className="bg-card rounded-lg overflow-hidden p-6">
-        <Carousel className="w-full">
-          <CarouselContent>
-            {BJJ_PHOTOS.map((photo, index) => (
-              <CarouselItem key={index}>
-                <img 
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-[400px] object-cover rounded-lg"
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
       </div>
     </div>
   );
