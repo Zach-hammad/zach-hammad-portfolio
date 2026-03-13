@@ -7,6 +7,7 @@ interface LayerSectionProps {
   title: string;
   description: string;
   accentColor: string;
+  backgroundClass?: string;
   children: ReactNode;
 }
 
@@ -16,10 +17,11 @@ export default function LayerSection({
   title,
   description,
   accentColor,
+  backgroundClass,
   children,
 }: LayerSectionProps) {
   return (
-    <section className="py-20 px-4">
+    <section className={`py-20 px-4 ${backgroundClass ?? ""}`}>
       <div className="max-w-5xl mx-auto">
         <AnimatedSection>
           <div className="mb-12">

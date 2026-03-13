@@ -34,6 +34,7 @@ export default async function Home() {
         title={`"I started at the metal"`}
         description="Designing CPUs, implementing architectures from first principles. Where I learned how computers actually work."
         accentColor="#4ade80"
+        backgroundClass="layer-hardware"
       >
         {hardwareProjects.map((project) => (
           <AnimatedSection key={project.slug} delay={0.1}>
@@ -56,6 +57,7 @@ export default async function Home() {
         title={`"Then I built the machines"`}
         description="Virtual machines, simulators, assembly. The layer between hardware and software."
         accentColor="#60a5fa"
+        backgroundClass="layer-systems"
       >
         {systemsProjects.map((project) => (
           <AnimatedSection key={project.slug} delay={0.1}>
@@ -78,6 +80,7 @@ export default async function Home() {
         title={`"Now I write what runs on them"`}
         description="Production software, developer tools, and AI systems. Where I am today."
         accentColor="#c084fc"
+        backgroundClass="layer-software"
       >
         {/* Professional experience -- NDA-safe */}
         <div className="md:col-span-2 mb-6">
