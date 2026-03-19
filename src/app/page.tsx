@@ -1,5 +1,7 @@
 import HeroContainer from "@/components/hero/HeroContainer";
 import IntroSection from "@/components/sections/IntroSection";
+import DragonCurveBackground from "@/components/DragonCurveBackground";
+import TopBar from "@/components/TopBar";
 import LayerSection from "@/components/sections/LayerSection";
 import PersonalSection from "@/components/sections/PersonalSection";
 import ContactFooter from "@/components/sections/ContactFooter";
@@ -23,10 +25,14 @@ export default async function Home() {
   const softwareProjects = getProjectsByLayer("software");
 
   return (
-    <main>
+    <>
+    <main className="font-mono">
+      <TopBar />
       <HeroContainer />
 
       <IntroSection />
+
+      <hr className="section-rule max-w-5xl mx-auto" />
 
       <LayerSection
         layerNumber={1}
@@ -34,7 +40,6 @@ export default async function Home() {
         title={`"I started at the metal"`}
         description="Designing CPUs, implementing architectures from first principles. Where I learned how computers actually work."
         accentColor="#4ade80"
-        backgroundClass="layer-hardware"
       >
         {hardwareProjects.map((project) => (
           <AnimatedSection key={project.slug} delay={0.1}>
@@ -51,13 +56,14 @@ export default async function Home() {
         ))}
       </LayerSection>
 
+      <hr className="section-rule max-w-5xl mx-auto" />
+
       <LayerSection
         layerNumber={2}
         label="Systems"
         title={`"Then I built the machines"`}
         description="Virtual machines, simulators, assembly. The layer between hardware and software."
         accentColor="#60a5fa"
-        backgroundClass="layer-systems"
       >
         {systemsProjects.map((project) => (
           <AnimatedSection key={project.slug} delay={0.1}>
@@ -74,20 +80,21 @@ export default async function Home() {
         ))}
       </LayerSection>
 
+      <hr className="section-rule max-w-5xl mx-auto" />
+
       <LayerSection
         layerNumber={3}
         label="Software & AI"
         title={`"Now I write what runs on them"`}
         description="Production software, developer tools, and AI systems. Where I am today."
         accentColor="#c084fc"
-        backgroundClass="layer-software"
       >
         {/* Professional experience -- NDA-safe */}
-        <div className="md:col-span-2 mb-6">
+        <div className="md:col-span-2 mb-4">
           <AnimatedSection>
-            <h3 className="text-lg font-semibold text-text-secondary mb-4">
-              Production Experience
-            </h3>
+            <div className="text-xs text-neutral-600 mb-4">
+              {"// "}production
+            </div>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {professionalExperience.map((exp) => (
@@ -104,9 +111,9 @@ export default async function Home() {
         {/* Open source projects */}
         <div className="md:col-span-2">
           <AnimatedSection>
-            <h3 className="text-lg font-semibold text-text-secondary mb-4 mt-4">
-              Open Source
-            </h3>
+            <div className="text-xs text-neutral-600 mb-4 mt-4">
+              {"// "}open source
+            </div>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {softwareProjects.map((project) => (
@@ -126,9 +133,13 @@ export default async function Home() {
         </div>
       </LayerSection>
 
+      <hr className="section-rule max-w-5xl mx-auto" />
+
       <PersonalSection />
 
       <ContactFooter />
     </main>
+    <DragonCurveBackground />
+    </>
   );
 }

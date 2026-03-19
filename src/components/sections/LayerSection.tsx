@@ -17,27 +17,31 @@ export default function LayerSection({
   title,
   description,
   accentColor,
-  backgroundClass,
   children,
 }: LayerSectionProps) {
   return (
-    <section className={`py-20 px-4 ${backgroundClass ?? ""}`}>
-      <div className="max-w-5xl mx-auto">
+    <section className="py-20 px-4">
+      <div className="max-w-5xl mx-auto font-mono">
         <AnimatedSection>
           <div className="mb-12">
-            <span
-              className="text-xs font-mono tracking-widest uppercase"
-              style={{ color: accentColor }}
-            >
-              Layer {layerNumber} — {label}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+            {/* Terminal-style section divider */}
+            <div className="text-xs text-neutral-600 mb-6">
+              {"// "}
+              <span style={{ color: accentColor }}>
+                LAYER {layerNumber}
+              </span>
+              {" — "}
+              {label.toUpperCase()}
+            </div>
+            <h2 className="text-2xl md:text-3xl font-normal text-neutral-200 mb-3">
               {title}
             </h2>
-            <p className="text-text-secondary max-w-2xl">{description}</p>
+            <p className="text-sm text-neutral-500 max-w-2xl leading-relaxed">
+              {description}
+            </p>
           </div>
         </AnimatedSection>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">{children}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{children}</div>
       </div>
     </section>
   );

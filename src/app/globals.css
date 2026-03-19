@@ -8,18 +8,13 @@ body {
 }
 
 ::selection {
-  background-color: rgba(96, 165, 250, 0.3);
+  background-color: rgba(255, 255, 255, 0.15);
   color: #fafafa;
 }
 
-.layer-hardware {
-  background: linear-gradient(135deg, #0a0a0a 0%, #0a1a0a 100%);
-}
-
-.layer-systems {
-  background: linear-gradient(135deg, #0a0a0a 0%, #0a0a1a 100%);
-}
-
-.layer-software {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
+/* Section divider line */
+.section-rule {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 0;
 }
