@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { contact } from "@/data/contact";
 
 /**
@@ -37,15 +37,6 @@ export default function TopBar() {
           >
             <Mail size={16} />
             <span className="hidden sm:inline">email</span>
-          </a>
-          <a
-            href={contact.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-neutral-200 transition-colors"
-          >
-            <FileText size={16} />
-            <span className="hidden sm:inline">resume</span>
           </a>
         </div>
       </div>

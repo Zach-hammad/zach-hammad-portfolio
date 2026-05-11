@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { contact } from "@/data/contact";
 
@@ -49,15 +49,6 @@ export default function IntroSection() {
             >
               <Mail size={12} />
               email
-            </a>
-            <a
-              href={contact.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-neutral-300 transition-colors"
-            >
-              <FileText size={12} />
-              resume
             </a>
           </div>
         </AnimatedSection>

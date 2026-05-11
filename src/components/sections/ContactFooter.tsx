@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { contact } from "@/data/contact";
 
@@ -42,16 +42,6 @@ export default function ContactFooter() {
               >
                 <Mail size={14} />
                 email
-              </a>
-              <a
-                href={contact.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-neutral-300 transition-colors"
-                aria-label="Resume"
-              >
-                <FileText size={14} />
-                resume
               </a>
             </div>
             <p className="text-neutral-700 text-[10px] tracking-wider">
