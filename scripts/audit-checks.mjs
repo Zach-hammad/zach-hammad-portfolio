@@ -157,6 +157,10 @@ assert(
   flagshipCaseStudySection.includes("flagshipCaseStudy.proof.map"),
   "FlagshipCaseStudy should render proof tokens"
 );
+assert(
+  !flagshipCaseStudySection.includes('className="border border-neutral-800 bg-neutral-950/50 p-4"'),
+  "Flagship proof tokens should be flattened within the outer card, not nested in a bordered panel"
+);
 
 const pageFile = read("src/app/page.tsx");
 assert(

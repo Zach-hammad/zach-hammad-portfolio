@@ -70,7 +70,7 @@ export default function FlagshipCaseStudy() {
                   </p>
                 </div>
               </div>
-              <div className="border border-neutral-800 bg-neutral-950/50 p-4">
+              <div className="py-1">
                 <div className="text-[10px] tracking-wider text-neutral-400 mb-4">
                   PROOF TOKENS
                 </div>
