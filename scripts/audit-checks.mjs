@@ -221,6 +221,10 @@ assert(
   "Dragon scroll updates should be throttled with requestAnimationFrame"
 );
 assert(
+  dragon.includes("cancelAnimationFrame(rafRef.current);\n        rafRef.current = null;"),
+  "Dragon scroll cleanup should clear the pending animation frame ref"
+);
+assert(
   dragon.includes('aria-hidden="true"'),
   "Dragon background should be hidden from assistive technology"
 );

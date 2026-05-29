@@ -201,7 +201,10 @@ export default function DragonCurveBackground() {
     updateDragon();
     return () => {
       window.removeEventListener("scroll", onScroll);
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
     };
   }, [reducedMotion, totalLength]);
 
