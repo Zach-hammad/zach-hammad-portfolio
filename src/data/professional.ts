@@ -4,31 +4,31 @@ export const professionalExperience: ProfessionalExperience[] = [
   {
     area: "Real-Time Video Processing",
     description:
-      "Designed and built a real-time video processing pipeline for production deployment.",
+      "Built GPU-accelerated video processing paths for production inference workloads.",
     technologies: ["TensorRT", "DeepStream", "Python", "CUDA"],
   },
   {
-    area: "Knowledge Graph System",
+    area: "Knowledge Graph Systems",
     description:
-      "Architected a knowledge graph with entity fingerprinting and relationship mapping.",
+      "Designed entity mapping and relationship layers for AI systems that need durable context.",
     technologies: ["Neo4j", "Python", "Rust", "Graph Algorithms"],
   },
   {
-    area: "Educational Platform",
+    area: "Full-Stack Product Systems",
     description:
-      "Developed a full-stack educational platform with gamification and knowledge tracking.",
-    technologies: ["Next.js", "Turborepo", "TypeScript", "Monorepo"],
+      "Built dashboard and workflow surfaces that connect AI capabilities to real users.",
+    technologies: ["Next.js", "TypeScript", "Turborepo", "Monorepo"],
   },
   {
     area: "Infrastructure & GitOps",
     description:
-      "Built and maintained production Kubernetes infrastructure with GitOps workflows.",
-    technologies: ["k3s", "ArgoCD", "Harbor", "GitHub Actions", "Doppler"],
+      "Maintained deployment paths for production services with repeatable infrastructure workflows.",
+    technologies: ["Kubernetes", "ArgoCD", "GitHub Actions", "Doppler"],
   },
   {
     area: "Edge AI Deployment",
     description:
-      "Deployed ML models to edge hardware with hardware-accelerated inference.",
+      "Deployed model workloads to constrained hardware with hardware-accelerated inference.",
     technologies: ["Hailo", "Raspberry Pi", "Python", "TensorRT"],
   },
 ];

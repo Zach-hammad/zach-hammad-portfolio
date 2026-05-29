@@ -172,6 +172,26 @@ assert(
   "Homepage should render the Repotoire flagship case study"
 );
 
+const productionProofSection = read("src/components/sections/ProductionProofSection.tsx");
+assert(
+  productionProofSection.includes("professionalExperience.map"),
+  "ProductionProofSection should render professional experience from data"
+);
+assert(
+  productionProofSection.includes("NDA-SAFE PRODUCTION"),
+  "ProductionProofSection should label work as NDA-safe production proof"
+);
+
+const updatedPage = read("src/app/page.tsx");
+assert(
+  updatedPage.includes("<ProductionProofSection />"),
+  "Homepage should render production proof as its own section"
+);
+assert(
+  !updatedPage.includes("{professionalExperience.map((exp) =>"),
+  "Software & AI layer should not inline professional experience after production proof is split out"
+);
+
 const animatedSection = read("src/components/AnimatedSection.tsx");
 assert(
   animatedSection.includes("useReducedMotion"),

@@ -2,16 +2,15 @@ import HeroContainer from "@/components/hero/HeroContainer";
 import IntroSection from "@/components/sections/IntroSection";
 import ProofPillarsSection from "@/components/sections/ProofPillarsSection";
 import FlagshipCaseStudy from "@/components/sections/FlagshipCaseStudy";
+import ProductionProofSection from "@/components/sections/ProductionProofSection";
 import DragonCurveBackground from "@/components/DragonCurveBackground";
 import TopBar from "@/components/TopBar";
 import LayerSection from "@/components/sections/LayerSection";
 import PersonalSection from "@/components/sections/PersonalSection";
 import ContactFooter from "@/components/sections/ContactFooter";
 import ProjectCard from "@/components/cards/ProjectCard";
-import ProfessionalCard from "@/components/cards/ProfessionalCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getProjectsByLayer } from "@/data/projects";
-import { professionalExperience } from "@/data/professional";
 import { fetchAllGitHubStats } from "@/lib/github";
 import { projects } from "@/data/projects";
 
@@ -41,6 +40,10 @@ export default async function Home() {
       <hr className="section-rule max-w-5xl mx-auto" />
 
       <FlagshipCaseStudy />
+
+      <hr className="section-rule max-w-5xl mx-auto" />
+
+      <ProductionProofSection />
 
       <hr className="section-rule max-w-5xl mx-auto" />
 
@@ -99,26 +102,6 @@ export default async function Home() {
         description="Production software, developer tools, and AI systems. Where I am today."
         accentColor="#c084fc"
       >
-        {/* Professional experience -- NDA-safe */}
-        <div className="md:col-span-2 mb-4">
-          <AnimatedSection>
-            <div className="text-xs text-neutral-400 mb-4">
-              {"// "}production
-            </div>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {professionalExperience.map((exp) => (
-              <AnimatedSection key={exp.area} delay={0.1}>
-                <ProfessionalCard
-                  experience={exp}
-                  accentColor="#c084fc"
-                />
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-
-        {/* Open source projects */}
         <div className="md:col-span-2">
           <AnimatedSection>
             <div className="text-xs text-neutral-400 mb-4 mt-4">
