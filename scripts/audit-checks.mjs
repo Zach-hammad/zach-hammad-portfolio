@@ -158,6 +158,10 @@ assert(
   "FlagshipCaseStudy should render proof tokens"
 );
 assert(
+  flagshipCaseStudySection.includes("min-h-11"),
+  "Flagship case study links need mobile-sized tap targets"
+);
+assert(
   !flagshipCaseStudySection.includes('className="border border-neutral-800 bg-neutral-950/50 p-4"'),
   "Flagship proof tokens should be flattened within the outer card, not nested in a bordered panel"
 );

@@ -36,7 +36,7 @@ export default function FlagshipCaseStudy() {
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
                     aria-label={link.ariaLabel}
-                    className="hover:text-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors"
+                    className="inline-flex min-h-11 items-center rounded-sm px-2 hover:text-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors"
                   >
                     [{link.label}]
                   </a>
