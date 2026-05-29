@@ -11,10 +11,10 @@ export default function ContactFooter() {
         <hr className="section-rule mb-12" />
         <AnimatedSection>
           <div className="text-center">
-            <div className="text-xs text-neutral-600 mb-8">
+            <div className="text-xs text-neutral-400 mb-8">
               {"// "}CONTACT
             </div>
-            <div className="flex items-center justify-center gap-8 mb-10 text-xs text-neutral-600">
+            <div className="flex items-center justify-center gap-8 mb-10 text-xs text-neutral-400">
               <a
                 href={contact.github}
                 target="_blank"
@@ -44,7 +44,7 @@ export default function ContactFooter() {
                 email
               </a>
             </div>
-            <p className="text-neutral-700 text-[10px] tracking-wider">
+            <p className="text-neutral-400 text-[10px] tracking-wider">
               &copy; {currentYear} Zacharia Hammad
             </p>
           </div>

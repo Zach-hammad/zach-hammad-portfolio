@@ -26,7 +26,7 @@ export default async function Home() {
 
   return (
     <>
-    <main className="font-mono">
+    <main className="font-mono relative z-10">
       <TopBar />
       <HeroContainer />
 
@@ -92,7 +92,7 @@ export default async function Home() {
         {/* Professional experience -- NDA-safe */}
         <div className="md:col-span-2 mb-4">
           <AnimatedSection>
-            <div className="text-xs text-neutral-600 mb-4">
+            <div className="text-xs text-neutral-400 mb-4">
               {"// "}production
             </div>
           </AnimatedSection>
@@ -111,7 +111,7 @@ export default async function Home() {
         {/* Open source projects */}
         <div className="md:col-span-2">
           <AnimatedSection>
-            <div className="text-xs text-neutral-600 mb-4 mt-4">
+            <div className="text-xs text-neutral-400 mb-4 mt-4">
               {"// "}open source
             </div>
           </AnimatedSection>

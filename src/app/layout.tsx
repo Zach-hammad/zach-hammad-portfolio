@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://zachariahammad.com"),
   title: "Zacharia Hammad — Computer Engineer",
   description:
     "Computer Engineer building from transistors to interfaces. Hardware design, systems programming, and production software engineering.",
@@ -14,10 +15,15 @@ export const metadata: Metadata = {
     "portfolio",
   ],
   authors: [{ name: "Zacharia Hammad" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Zacharia Hammad — Computer Engineer",
     description:
       "Computer Engineer building from transistors to interfaces.",
+    url: "/",
+    siteName: "Zacharia Hammad",
     type: "website",
     locale: "en_US",
   },

@@ -12,12 +12,13 @@ export default function TopBar() {
         <span className="text-sm text-neutral-300 tracking-wide font-medium">
           Zacharia Hammad
         </span>
-        <div className="flex items-center gap-6 text-xs text-neutral-500">
+        <div className="flex items-center gap-2 text-xs text-neutral-400 sm:gap-6">
           <a
             href={contact.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-neutral-200 transition-colors"
+            aria-label="GitHub"
+            className="flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-sm hover:text-neutral-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors sm:min-h-0 sm:min-w-0"
           >
             <Github size={16} />
             <span className="hidden sm:inline">github</span>
@@ -26,14 +27,16 @@ export default function TopBar() {
             href={contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-neutral-200 transition-colors"
+            aria-label="LinkedIn"
+            className="flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-sm hover:text-neutral-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors sm:min-h-0 sm:min-w-0"
           >
             <Linkedin size={16} />
             <span className="hidden sm:inline">linkedin</span>
           </a>
           <a
             href={`mailto:${contact.email}`}
-            className="flex items-center gap-1.5 hover:text-neutral-200 transition-colors"
+            aria-label="Email"
+            className="flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-sm hover:text-neutral-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors sm:min-h-0 sm:min-w-0"
           >
             <Mail size={16} />
             <span className="hidden sm:inline">email</span>

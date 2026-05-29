@@ -6,11 +6,11 @@ export const personalSections: PersonalSection[] = [
     description:
       "I practice BJJ and help teach the kids' class. The discipline, patience, and mentorship translate directly into how I approach engineering problems.",
     images: [
-      { src: "/images/bjj/training-1.png", alt: "BJJ training session" },
-      { src: "/images/bjj/training-2.png", alt: "BJJ training session" },
-      { src: "/images/bjj/group-1.png", alt: "BJJ group photo" },
-      { src: "/images/bjj/training-3.png", alt: "BJJ training session" },
-      { src: "/images/bjj/group-2.png", alt: "BJJ group with students" },
+      { src: "/images/bjj/training-1.jpg", alt: "BJJ training session" },
+      { src: "/images/bjj/training-2.jpg", alt: "BJJ training session" },
+      { src: "/images/bjj/group-1.jpg", alt: "BJJ group photo" },
+      { src: "/images/bjj/training-3.jpg", alt: "BJJ training session" },
+      { src: "/images/bjj/group-2.jpg", alt: "BJJ group with students" },
     ],
   },
   {
@@ -23,10 +23,10 @@ export const personalSections: PersonalSection[] = [
     description:
       "Exploring different cultures and capturing moments through photography broadens how I think about problems and design.",
     images: [
-      { src: "/images/travel/coastal.png", alt: "Coastal view" },
-      { src: "/images/travel/grand-canyon.png", alt: "Grand Canyon" },
-      { src: "/images/travel/library.png", alt: "Library" },
-      { src: "/images/travel/paris.png", alt: "Paris" },
+      { src: "/images/travel/coastal.jpg", alt: "Coastal view" },
+      { src: "/images/travel/grand-canyon.jpg", alt: "Grand Canyon" },
+      { src: "/images/travel/library.jpg", alt: "Library" },
+      { src: "/images/travel/paris.jpg", alt: "Paris" },
     ],
   },
 ];

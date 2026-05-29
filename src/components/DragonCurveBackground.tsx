@@ -89,6 +89,7 @@ export default function DragonCurveBackground() {
   const stop1Ref = useRef<SVGStopElement>(null);
   const stop2Ref = useRef<SVGStopElement>(null);
   const [totalLength, setTotalLength] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   const { path, viewBox } = useMemo(() => {
     const points = generateDragonCurve(14); // 2^14 = 16384 segments
@@ -112,16 +113,24 @@ export default function DragonCurveBackground() {
   }, []);
 
   useEffect(() => {
-    if (!pathRef.current) return;
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateReducedMotion = () => setReducedMotion(media.matches);
+    updateReducedMotion();
+    media.addEventListener("change", updateReducedMotion);
+    return () => media.removeEventListener("change", updateReducedMotion);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion || !pathRef.current) return;
     const len = pathRef.current.getTotalLength();
     setTotalLength(len);
     pathRef.current.style.strokeDasharray = `${len}`;
     // Show first 15% on load — visible immediately
     pathRef.current.style.strokeDashoffset = `${len * 0.85}`;
-  }, [path]);
+  }, [path, reducedMotion]);
 
   useEffect(() => {
-    if (!totalLength || !pathRef.current) return;
+    if (reducedMotion || !totalLength || !pathRef.current) return;
 
     function onScroll() {
       if (!pathRef.current || !containerRef.current) return;
@@ -153,12 +162,14 @@ export default function DragonCurveBackground() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll(); // initial
     return () => window.removeEventListener("scroll", onScroll);
-  }, [totalLength]);
+  }, [reducedMotion, totalLength]);
+
+  if (reducedMotion) return null;
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none z-30"
+      className="fixed inset-0 pointer-events-none z-0"
       style={{ opacity: 0.25 }}
     >
       <svg

@@ -8,7 +8,7 @@ export default function PersonalSection() {
       <div className="max-w-5xl mx-auto">
         <AnimatedSection>
           <div className="mb-12">
-            <div className="text-xs text-neutral-600 mb-6">
+            <div className="text-xs text-neutral-400 mb-6">
               {"// "}BEYOND CODE
             </div>
             <h2 className="text-2xl md:text-3xl font-normal text-neutral-200">
@@ -24,7 +24,7 @@ export default function PersonalSection() {
                   <h3 className="text-lg font-normal text-neutral-300 mb-3">
                     {section.title}
                   </h3>
-                  <p className="text-xs text-neutral-500 leading-relaxed">
+                  <p className="text-xs text-neutral-400 leading-relaxed">
                     {section.description}
                   </p>
                 </div>

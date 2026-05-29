@@ -25,7 +25,7 @@ export default function LayerSection({
         <AnimatedSection>
           <div className="mb-12">
             {/* Terminal-style section divider */}
-            <div className="text-xs text-neutral-600 mb-6">
+            <div className="text-xs text-neutral-400 mb-6">
               {"// "}
               <span style={{ color: accentColor }}>
                 LAYER {layerNumber}
@@ -36,7 +36,7 @@ export default function LayerSection({
             <h2 className="text-2xl md:text-3xl font-normal text-neutral-200 mb-3">
               {title}
             </h2>
-            <p className="text-sm text-neutral-500 max-w-2xl leading-relaxed">
+            <p className="text-sm text-neutral-400 max-w-2xl leading-relaxed">
               {description}
             </p>
           </div>

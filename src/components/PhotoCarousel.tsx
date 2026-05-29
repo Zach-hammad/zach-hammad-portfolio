@@ -14,6 +14,8 @@ export default function PhotoCarousel({ images }: PhotoCarouselProps) {
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const controlClass =
+    "absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-background/90 text-neutral-100 opacity-100 md:opacity-0 shadow-sm ring-1 ring-neutral-700 transition-opacity hover:bg-neutral-900 focus:outline-none focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-neutral-100 md:group-hover:opacity-100";
 
   return (
     <div className="relative group">
@@ -36,14 +38,14 @@ export default function PhotoCarousel({ images }: PhotoCarouselProps) {
       </div>
       <button
         onClick={scrollPrev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+        className={`${controlClass} left-2`}
         aria-label="Previous image"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+        className={`${controlClass} right-2`}
         aria-label="Next image"
       >
         <ChevronRight size={20} />
