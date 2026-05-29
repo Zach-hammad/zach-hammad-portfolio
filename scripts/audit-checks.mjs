@@ -39,6 +39,33 @@ assert(topBar.includes('aria-label="LinkedIn"'), "TopBar LinkedIn link needs an 
 assert(topBar.includes('aria-label="Email"'), "TopBar email link needs an accessible name");
 assert(topBar.includes("min-h-11"), "TopBar links need mobile-sized tap targets");
 
+const contactData = read("src/data/contact.ts");
+assert(
+  contactData.includes("resume: undefined as string | undefined"),
+  "Contact data should expose an optional resume field so resume links can be hidden when absent"
+);
+
+const proofData = read("src/data/proof.ts");
+for (const requiredProofText of [
+  "Full-Stack AI Engineer",
+  "I build AI systems end to end",
+  "AI Products & Agents",
+  "Retrieval & Knowledge Systems",
+  "Inference & Edge AI",
+  "Systems Foundation",
+  "Repotoire",
+  "110+ detectors",
+]) {
+  assert(
+    proofData.includes(requiredProofText),
+    `Proof data missing required text: ${requiredProofText}`
+  );
+}
+assert(
+  proofData.includes("contact.resume"),
+  "Fast path links should read the optional resume URL from contact data"
+);
+
 const intro = read("src/components/sections/IntroSection.tsx");
 assert(!intro.includes("<h1"), "IntroSection should not add a second h1");
 assert(intro.includes("<h2"), "IntroSection should keep the repeated name as h2");
