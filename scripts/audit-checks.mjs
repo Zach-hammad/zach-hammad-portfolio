@@ -138,6 +138,36 @@ assert(
   "CanvasHero should render the same visible hero copy as StaticHero"
 );
 
+const proofPillarsSection = read("src/components/sections/ProofPillarsSection.tsx");
+assert(
+  proofPillarsSection.includes("proofPillars.map"),
+  "ProofPillarsSection should render all proof pillars from data"
+);
+assert(
+  proofPillarsSection.includes("borderLeftColor: pillar.accentColor"),
+  "Proof pillar cards should preserve the existing left-accent card language"
+);
+
+const flagshipCaseStudySection = read("src/components/sections/FlagshipCaseStudy.tsx");
+assert(
+  flagshipCaseStudySection.includes("flagshipCaseStudy.problem"),
+  "FlagshipCaseStudy should render the problem narrative"
+);
+assert(
+  flagshipCaseStudySection.includes("flagshipCaseStudy.proof.map"),
+  "FlagshipCaseStudy should render proof tokens"
+);
+
+const pageFile = read("src/app/page.tsx");
+assert(
+  pageFile.includes("<ProofPillarsSection />"),
+  "Homepage should render proof pillars near the top"
+);
+assert(
+  pageFile.includes("<FlagshipCaseStudy />"),
+  "Homepage should render the Repotoire flagship case study"
+);
+
 const animatedSection = read("src/components/AnimatedSection.tsx");
 assert(
   animatedSection.includes("useReducedMotion"),

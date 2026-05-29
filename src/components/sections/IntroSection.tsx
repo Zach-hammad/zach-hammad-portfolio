@@ -1,56 +1,22 @@
-import { Github, Linkedin, Mail } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
-import { contact } from "@/data/contact";
+import { roleIdentity } from "@/data/proof";
 
 export default function IntroSection() {
   return (
     <section className="py-24 px-4 font-mono">
       <div className="max-w-3xl mx-auto text-center">
         <AnimatedSection>
-          <h2 className="text-4xl md:text-6xl font-normal mb-4 text-neutral-100 tracking-tight">
-            Zacharia Hammad
+          <div className="text-xs text-neutral-400 mb-6">
+            {"// "}POSITIONING
+          </div>
+          <h2 className="text-3xl md:text-5xl font-normal mb-6 text-neutral-100 tracking-tight">
+            Systems depth for production AI
           </h2>
         </AnimatedSection>
         <AnimatedSection delay={0.1}>
-          <p className="text-sm text-neutral-400 mb-6 tracking-wide">
-            Computer Engineer. Transistors to interfaces.
+          <p className="text-sm text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            {roleIdentity.intro}
           </p>
-        </AnimatedSection>
-        <AnimatedSection delay={0.2}>
-          <p className="text-xs text-neutral-400 max-w-lg mx-auto mb-10 leading-relaxed">
-            Computer Engineering graduate from Drexel University. Designed CPUs,
-            built virtual machines, shipped developer tools in Rust, deployed
-            production ML pipelines. Systems from the ground up.
-          </p>
-        </AnimatedSection>
-        <AnimatedSection delay={0.3}>
-          <div className="flex items-center justify-center gap-6 text-xs text-neutral-400">
-            <a
-              href={contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-neutral-300 transition-colors"
-            >
-              <Github size={12} />
-              github
-            </a>
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-neutral-300 transition-colors"
-            >
-              <Linkedin size={12} />
-              linkedin
-            </a>
-            <a
-              href={`mailto:${contact.email}`}
-              className="flex items-center gap-1.5 hover:text-neutral-300 transition-colors"
-            >
-              <Mail size={12} />
-              email
-            </a>
-          </div>
         </AnimatedSection>
       </div>
     </section>

@@ -1,5 +1,7 @@
 import HeroContainer from "@/components/hero/HeroContainer";
 import IntroSection from "@/components/sections/IntroSection";
+import ProofPillarsSection from "@/components/sections/ProofPillarsSection";
+import FlagshipCaseStudy from "@/components/sections/FlagshipCaseStudy";
 import DragonCurveBackground from "@/components/DragonCurveBackground";
 import TopBar from "@/components/TopBar";
 import LayerSection from "@/components/sections/LayerSection";
@@ -31,6 +33,14 @@ export default async function Home() {
       <HeroContainer />
 
       <IntroSection />
+
+      <hr className="section-rule max-w-5xl mx-auto" />
+
+      <ProofPillarsSection />
+
+      <hr className="section-rule max-w-5xl mx-auto" />
+
+      <FlagshipCaseStudy />
 
       <hr className="section-rule max-w-5xl mx-auto" />
 
