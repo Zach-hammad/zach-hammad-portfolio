@@ -81,10 +81,19 @@ function pointsToPath(points: { x: number; y: number }[]) {
   return d;
 }
 
+function setPathDash(path: SVGPathElement | null, length: number, offset: number) {
+  if (!path) return;
+  path.style.strokeDasharray = `${length}`;
+  path.style.strokeDashoffset = `${offset}`;
+}
+
 export default function DragonCurveBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
+  const glowPathRef = useRef<SVGPathElement>(null);
+  const ghostPathRef = useRef<SVGPathElement>(null);
+  const rafRef = useRef<number | null>(null);
   const stop0Ref = useRef<SVGStopElement>(null);
   const stop1Ref = useRef<SVGStopElement>(null);
   const stop2Ref = useRef<SVGStopElement>(null);
@@ -121,18 +130,26 @@ export default function DragonCurveBackground() {
   }, []);
 
   useEffect(() => {
-    if (reducedMotion || !pathRef.current) return;
+    if (!pathRef.current) return;
     const len = pathRef.current.getTotalLength();
     setTotalLength(len);
-    pathRef.current.style.strokeDasharray = `${len}`;
-    // Show first 15% on load — visible immediately
-    pathRef.current.style.strokeDashoffset = `${len * 0.85}`;
+
+    if (reducedMotion) {
+      setPathDash(pathRef.current, len, 0);
+      setPathDash(glowPathRef.current, len, 0);
+      setPathDash(ghostPathRef.current, len, 0);
+      return;
+    }
+
+    setPathDash(pathRef.current, len, len * 0.85);
+    setPathDash(glowPathRef.current, len, len * 0.88);
+    setPathDash(ghostPathRef.current, len, len * 0.92);
   }, [path, reducedMotion]);
 
   useEffect(() => {
     if (reducedMotion || !totalLength || !pathRef.current) return;
 
-    function onScroll() {
+    function updateDragon() {
       if (!pathRef.current || !containerRef.current) return;
 
       const scrollY = window.scrollY;
@@ -145,7 +162,13 @@ export default function DragonCurveBackground() {
 
       // 15% baseline + 85% scroll-driven
       const progress = 0.15 + scrollProgress * 0.85;
-      pathRef.current.style.strokeDashoffset = `${totalLength * (1 - progress)}`;
+      const mainOffset = totalLength * (1 - progress);
+      const glowOffset = totalLength * (1 - Math.max(0, progress - 0.025));
+      const ghostOffset = totalLength * (1 - Math.max(0, progress - 0.055));
+
+      setPathDash(pathRef.current, totalLength, mainOffset);
+      setPathDash(glowPathRef.current, totalLength, glowOffset);
+      setPathDash(ghostPathRef.current, totalLength, ghostOffset);
 
       // Shift vertical gradient to match current stage colors.
       // ±0.18 spread shows ~one stage transition in the viewport.
@@ -157,20 +180,37 @@ export default function DragonCurveBackground() {
       if (stop0Ref.current) stop0Ref.current.setAttribute("stop-color", topColor);
       if (stop1Ref.current) stop1Ref.current.setAttribute("stop-color", midColor);
       if (stop2Ref.current) stop2Ref.current.setAttribute("stop-color", botColor);
+
+      if (svgRef.current) {
+        const shiftX = (scrollProgress - 0.5) * 18;
+        const shiftY = (scrollProgress - 0.5) * -12;
+        const scale = 1 + scrollProgress * 0.035;
+        svgRef.current.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0) scale(${scale})`;
+      }
+    }
+
+    function onScroll() {
+      if (rafRef.current !== null) return;
+      rafRef.current = requestAnimationFrame(() => {
+        updateDragon();
+        rafRef.current = null;
+      });
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // initial
-    return () => window.removeEventListener("scroll", onScroll);
+    updateDragon();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
   }, [reducedMotion, totalLength]);
-
-  if (reducedMotion) return null;
 
   return (
     <div
       ref={containerRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.25 }}
+      aria-hidden="true"
+      style={{ opacity: reducedMotion ? 0.14 : 0.32 }}
     >
       <svg
         ref={svgRef}
@@ -185,14 +225,43 @@ export default function DragonCurveBackground() {
             <stop ref={stop1Ref} offset="50%" stopColor="#4ade80" />
             <stop ref={stop2Ref} offset="100%" stopColor="#60a5fa" />
           </linearGradient>
+          <filter id="dragonGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="0.9" result="blur" />
+            <feColorMatrix
+              in="blur"
+              type="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.75 0"
+            />
+          </filter>
         </defs>
+        <path
+          ref={ghostPathRef}
+          d={path}
+          stroke="url(#dragonGradient)"
+          strokeWidth="1.15"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity={reducedMotion ? 0.16 : 0.2}
+          transform="translate(1.1 -1.1)"
+        />
+        <path
+          ref={glowPathRef}
+          d={path}
+          stroke="url(#dragonGradient)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity={reducedMotion ? 0.08 : 0.22}
+          filter="url(#dragonGlow)"
+        />
         <path
           ref={pathRef}
           d={path}
           stroke="url(#dragonGradient)"
-          strokeWidth="0.8"
+          strokeWidth="0.72"
           strokeLinecap="round"
           strokeLinejoin="round"
+          opacity={reducedMotion ? 0.34 : 0.82}
         />
       </svg>
     </div>

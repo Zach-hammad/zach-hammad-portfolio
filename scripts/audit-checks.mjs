@@ -204,6 +204,30 @@ assert(
   "Dragon background should respect reduced motion"
 );
 assert(dragon.includes("z-0"), "Dragon background should sit behind page content");
+assert(
+  dragon.includes("dragonGlow"),
+  "Dragon background should include a glow filter"
+);
+assert(
+  dragon.includes("glowPathRef"),
+  "Dragon background should render a separate glow path"
+);
+assert(
+  dragon.includes("ghostPathRef"),
+  "Dragon background should render a separate ghost/depth path"
+);
+assert(
+  dragon.includes("requestAnimationFrame"),
+  "Dragon scroll updates should be throttled with requestAnimationFrame"
+);
+assert(
+  dragon.includes('aria-hidden="true"'),
+  "Dragon background should be hidden from assistive technology"
+);
+assert(
+  !dragon.includes("if (reducedMotion) return null"),
+  "Reduced motion should use a static Dragon Curve fallback instead of always hiding it"
+);
 
 const page = read("src/app/page.tsx");
 assert(
