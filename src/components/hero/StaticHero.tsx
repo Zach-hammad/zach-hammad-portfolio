@@ -1,13 +1,13 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import HeroCopy from "./HeroCopy";
 
 export default function StaticHero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
-      {/* Subtle animated background */}
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
@@ -22,58 +22,22 @@ export default function StaticHero() {
       </div>
 
       <motion.div
-        className="text-center relative z-10"
-        initial={shouldReduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 1.5 }}
+        className="relative z-10 w-full"
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={shouldReduceMotion ? { duration: 0 } : { duration: 1 }}
       >
-        <motion.p
-          className="text-xs font-mono tracking-[0.3em] uppercase text-neutral-400 mb-6"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={
-            shouldReduceMotion
-              ? { duration: 0 }
-              : { delay: 0.3, duration: 0.8 }
-          }
-        >
-          Transistors &rarr; Logic &rarr; Architecture &rarr; Assembly &rarr; Code
-        </motion.p>
-        <motion.h1
-          className="text-5xl md:text-7xl font-bold mb-4"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={
-            shouldReduceMotion
-              ? { duration: 0 }
-              : { delay: 0.6, duration: 0.8 }
-          }
-        >
-          Zacharia Hammad
-        </motion.h1>
-        <motion.p
-          className="text-xl text-text-secondary"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={
-            shouldReduceMotion
-              ? { duration: 0 }
-              : { delay: 0.9, duration: 0.8 }
-          }
-        >
-          Computer Engineer
-        </motion.p>
+        <HeroCopy />
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8"
         initial={shouldReduceMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { delay: 1.5 }}
+        transition={shouldReduceMotion ? { duration: 0 } : { delay: 1.2 }}
       >
         <motion.div
-          className="w-px h-12 bg-gradient-to-b from-text-muted to-transparent mx-auto"
+          className="w-px h-12 bg-gradient-to-b from-neutral-400 to-transparent mx-auto"
           animate={shouldReduceMotion ? undefined : { scaleY: [1, 0.5, 1] }}
           transition={
             shouldReduceMotion ? undefined : { repeat: Infinity, duration: 2 }

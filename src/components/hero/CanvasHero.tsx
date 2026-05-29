@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import ParticleSystem from "./stages/ParticleSystem";
 import CodeOverlay from "./overlays/CodeOverlay";
+import HeroCopy from "./HeroCopy";
 
 /**
  * Scroll progress tracked via both ref (for R3F, zero re-renders)
@@ -69,6 +70,11 @@ export default function CanvasHero() {
         <ParticleSystem progressRef={progressRef} />
       </Canvas>
       <CodeOverlay progress={progress} />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="pointer-events-auto w-full">
+          <HeroCopy />
+        </div>
+      </div>
     </div>
   );
 }

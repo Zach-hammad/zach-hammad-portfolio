@@ -103,6 +103,41 @@ assert(
 const staticHero = read("src/components/hero/StaticHero.tsx");
 assert(staticHero.includes("useReducedMotion"), "StaticHero should respect reduced motion");
 
+const heroCopy = read("src/components/hero/HeroCopy.tsx");
+assert(heroCopy.includes("<h1"), "HeroCopy should own the single page h1");
+assert(
+  heroCopy.includes("roleIdentity.eyebrow"),
+  "HeroCopy should render the Full-Stack AI Engineer eyebrow from proof data"
+);
+assert(
+  heroCopy.includes("roleIdentity.lead"),
+  "HeroCopy should render the role lead from proof data"
+);
+
+const fastPathLinksComponent = read("src/components/FastPathLinks.tsx");
+assert(
+  fastPathLinksComponent.includes("fastPathLinks.map"),
+  "FastPathLinks should render the proof data link list"
+);
+assert(
+  fastPathLinksComponent.includes("aria-label={link.ariaLabel}"),
+  "FastPathLinks anchors need descriptive accessible labels"
+);
+assert(
+  fastPathLinksComponent.includes("min-h-11"),
+  "FastPathLinks should keep mobile-sized tap targets"
+);
+assert(
+  staticHero.includes("<HeroCopy />"),
+  "StaticHero should render the shared hero copy"
+);
+
+const canvasHero = read("src/components/hero/CanvasHero.tsx");
+assert(
+  canvasHero.includes("<HeroCopy />"),
+  "CanvasHero should render the same visible hero copy as StaticHero"
+);
+
 const animatedSection = read("src/components/AnimatedSection.tsx");
 assert(
   animatedSection.includes("useReducedMotion"),
