@@ -3,13 +3,15 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zachariahammad.com"),
-  title: "Zacharia Hammad — Computer Engineer",
+  title: "Zacharia Hammad — Full-Stack AI Engineer",
   description:
-    "Computer Engineer building from transistors to interfaces. Hardware design, systems programming, and production software engineering.",
+    "Full-Stack AI Engineer building agents, retrieval systems, computer vision pipelines, infrastructure, and low-level systems foundations.",
   keywords: [
-    "computer engineer",
+    "full-stack ai engineer",
+    "AI agents",
+    "retrieval systems",
+    "computer vision",
     "RISC-V",
-    "CPU design",
     "Rust",
     "systems programming",
     "portfolio",
@@ -19,9 +21,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Zacharia Hammad — Computer Engineer",
+    title: "Zacharia Hammad — Full-Stack AI Engineer",
     description:
-      "Computer Engineer building from transistors to interfaces.",
+      "Building AI systems end to end: agents, retrieval, computer vision, infrastructure, and systems foundations.",
     url: "/",
     siteName: "Zacharia Hammad",
     type: "website",
@@ -29,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zacharia Hammad — Computer Engineer",
+    title: "Zacharia Hammad — Full-Stack AI Engineer",
     description:
-      "Computer Engineer building from transistors to interfaces.",
+      "Building AI systems end to end: agents, retrieval, computer vision, infrastructure, and systems foundations.",
   },
   robots: {
     index: true,

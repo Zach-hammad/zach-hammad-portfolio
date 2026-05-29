@@ -214,6 +214,24 @@ assert(
 const layout = read("src/app/layout.tsx");
 assert(layout.includes("metadataBase"), "Metadata should include a production metadataBase");
 assert(layout.includes("canonical"), "Metadata should include a canonical URL");
+assert(
+  layout.includes("Full-Stack AI Engineer"),
+  "Metadata should include the new Full-Stack AI Engineer positioning"
+);
+assert(
+  layout.includes("agents, retrieval, computer vision"),
+  "Metadata description should include core AI system capabilities"
+);
+
+const contactFooter = read("src/components/sections/ContactFooter.tsx");
+assert(
+  contactFooter.includes("roleIdentity.footerLine"),
+  "ContactFooter should render the role-specific closing line"
+);
+assert(
+  contactFooter.includes("<FastPathLinks />"),
+  "ContactFooter should reuse FastPathLinks"
+);
 
 const personalData = read("src/data/personal.ts");
 assert(!personalData.includes(".png"), "Referenced carousel images should not use .png extensions");
