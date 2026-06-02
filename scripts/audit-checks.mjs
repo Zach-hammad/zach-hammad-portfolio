@@ -41,8 +41,12 @@ assert(topBar.includes("min-h-11"), "TopBar links need mobile-sized tap targets"
 
 const contactData = read("src/data/contact.ts");
 assert(
-  contactData.includes("resume: undefined as string | undefined"),
-  "Contact data should expose an optional resume field so resume links can be hidden when absent"
+  contactData.includes('resume: "/resume-zacharia-hammad.pdf" as string | undefined'),
+  "Contact data should expose the public resume path while keeping the field optional"
+);
+assert(
+  existsSync(path.join(root, "public/resume-zacharia-hammad.pdf")),
+  "Public resume PDF should exist at /resume-zacharia-hammad.pdf"
 );
 
 const proofData = read("src/data/proof.ts");
