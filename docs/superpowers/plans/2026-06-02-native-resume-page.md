@@ -84,7 +84,7 @@ Run: `bun run lint`, `bun run audit`, `bun run build`, and `git diff --check`.
 
 - [ ] **Step 2: Verify exported route**
 
-Confirm `out/resume/index.html` contains `/resume-zacharia-hammad.pdf`, `Visionary Solutions`, `Technical Skills`, and `Professional Experience`.
+Confirm `out/resume.html` contains `/resume-zacharia-hammad.pdf`, `Visionary Solutions`, `Technical Skills`, and `Professional Experience`.
 
 - [ ] **Step 3: Commit and push**
 

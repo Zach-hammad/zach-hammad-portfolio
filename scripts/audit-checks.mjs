@@ -41,13 +41,42 @@ assert(topBar.includes("min-h-11"), "TopBar links need mobile-sized tap targets"
 
 const contactData = read("src/data/contact.ts");
 assert(
-  contactData.includes('resume: "/resume-zacharia-hammad.pdf" as string | undefined'),
-  "Contact data should expose the public resume path while keeping the field optional"
+  contactData.includes('resume: "/resume" as string | undefined'),
+  "Contact data should point resume links to the native /resume route"
+);
+assert(
+  contactData.includes('resumePdf: "/resume-zacharia-hammad.pdf"'),
+  "Contact data should expose the public resume PDF path separately"
 );
 assert(
   existsSync(path.join(root, "public/resume-zacharia-hammad.pdf")),
   "Public resume PDF should exist at /resume-zacharia-hammad.pdf"
 );
+
+assert(
+  existsSync(path.join(root, "src/data/resume.ts")),
+  "Structured resume data should exist"
+);
+assert(
+  existsSync(path.join(root, "src/app/resume/page.tsx")),
+  "Native resume route should exist at /resume"
+);
+const resumePage = read("src/app/resume/page.tsx");
+const resumeSource = `${resumePage}\n${read("src/data/resume.ts")}\n${contactData}`;
+for (const requiredResumeText of [
+  "TopBar",
+  "Professional Experience",
+  "Technical Skills",
+  "Visionary Solutions",
+  "Repotoire",
+  "Drexel University",
+  "/resume-zacharia-hammad.pdf",
+]) {
+  assert(
+    resumeSource.includes(requiredResumeText),
+    `Resume page missing required text: ${requiredResumeText}`
+  );
+}
 
 const proofData = read("src/data/proof.ts");
 for (const requiredProofText of [

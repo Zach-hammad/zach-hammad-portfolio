@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
+import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import { contact } from "@/data/contact";
 
 /**
@@ -9,10 +10,24 @@ export default function TopBar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 font-mono backdrop-blur-sm bg-[#0a0a0a]/80">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <span className="text-sm text-neutral-300 tracking-wide font-medium">
+        <Link
+          href="/"
+          aria-label="Home"
+          className="text-sm text-neutral-300 tracking-wide font-medium hover:text-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors"
+        >
           Zacharia Hammad
-        </span>
+        </Link>
         <div className="flex items-center gap-2 text-xs text-neutral-400 sm:gap-6">
+          {contact.resume ? (
+            <Link
+              href={contact.resume}
+              aria-label="Resume"
+              className="flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-sm hover:text-neutral-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors sm:min-h-0 sm:min-w-0"
+            >
+              <FileText size={16} />
+              <span className="hidden sm:inline">resume</span>
+            </Link>
+          ) : null}
           <a
             href={contact.github}
             target="_blank"
