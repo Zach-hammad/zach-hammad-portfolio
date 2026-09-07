@@ -63,7 +63,6 @@ export default function PersonalSection() {
             </div>
             <div className="personal-story-copy">
               <h3>{section.title}</h3>
-              <p>{section.description}</p>
             </div>
           </article>
         ))}
