@@ -28,7 +28,6 @@ export interface PersonalPhoto {
 
 export interface PersonalSection {
   title: string;
-  description: string;
   images?: PersonalPhoto[];
 }
 
