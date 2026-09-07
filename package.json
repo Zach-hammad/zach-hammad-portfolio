@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "bun run share-image && next build",
+    "share-image": "bun scripts/generate-share-image.tsx",
     "start": "next start",
     "lint": "eslint",
     "audit": "node scripts/audit-checks.mjs"

@@ -1,27 +1,27 @@
 import type { Metadata } from "next";
+import { site } from "@/data/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zachariahammad.com"),
-  title: "Zacharia Hammad — AI Products & Systems",
-  description:
-    "Software engineer building AI products, computer-vision pipelines, knowledge graphs, and Rust runtimes. Computer engineering foundations, from RISC-V to ASIC design.",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
   authors: [{ name: "Zacharia Hammad" }],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Zacharia Hammad — AI Products & Systems",
-    description:
-      "AI products. Systems thinking. Selected work in computer vision, voice agents, knowledge graphs, and computer architecture.",
+    title: site.title,
+    description: site.description,
     url: "/",
     siteName: "Zacharia Hammad",
     type: "website",
     locale: "en_US",
+    images: [site.socialImage],
   },
   twitter: {
-    card: "summary",
-    title: "Zacharia Hammad — AI Products & Systems",
-    description:
-      "AI products. Systems thinking. From the product people use to the runtime underneath.",
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: [site.socialImage],
   },
   robots: { index: true, follow: true },
 };

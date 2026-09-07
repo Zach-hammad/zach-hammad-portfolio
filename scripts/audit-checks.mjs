@@ -16,11 +16,46 @@ const pages = new Map();
 for (const [route, file] of routes) {
   const location = path.join(output, file);
   assert(existsSync(location), "Run bun run build before bun run audit.");
-  const html = readFileSync(location, "utf8").replace(
+  const exported = readFileSync(location, "utf8");
+  const html = exported.replace(
     /<script\b[^>]*>[\s\S]*?<\/script>/gi,
     "",
   );
   pages.set(route, html);
+  const meta = (name) => {
+    const tags = [...html.matchAll(/<meta\b[^>]*>/g)];
+    const tag = tags.find(([value]) =>
+      value.includes(`name="${name}"`) || value.includes(`property="${name}"`),
+    );
+    return tag?.[0].match(/content="([^"]*)"/)?.[1];
+  };
+  const pageTitle = html.match(/<title>([^<]+)<\/title>/)?.[1];
+  assert(pageTitle && meta("description"), `${route}: missing search metadata`);
+  assert.equal(meta("og:title"), pageTitle, `${route}: mismatched Open Graph title`);
+  assert.equal(meta("twitter:title"), pageTitle, `${route}: inherited social title`);
+  assert(!meta("robots")?.includes("noindex"), `${route}: indexing is disabled`);
+  assert.equal(meta("twitter:card"), "summary_large_image");
+  const imageUrl = new URL(meta("og:image"));
+  assert.equal(imageUrl.origin, origin, `${route}: preview must use the public origin`);
+  assert.equal(meta("twitter:image"), imageUrl.href, `${route}: mismatched preview`);
+  assert(meta("og:image:alt"), `${route}: missing preview description`);
+  const image = readFileSync(path.join(output, imageUrl.pathname));
+  assert.equal(image.subarray(1, 4).toString(), "PNG", `${route}: preview must be PNG`);
+  assert.equal(image.readUInt32BE(16), 1200);
+  assert.equal(image.readUInt32BE(20), 630);
+
+  const schemas = [...exported.matchAll(
+    /<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,
+  )].map((match) => JSON.parse(match[1]));
+  assert.equal(schemas.length, 1, `${route}: expected one profile schema`);
+  const profile = schemas[0];
+  assert.equal(profile["@type"], "ProfilePage");
+  assert.equal(profile.url, new URL(route, origin).href);
+  assert.equal(profile.mainEntity["@type"], "Person");
+  assert(html.includes(profile.mainEntity.name), `${route}: schema name is not visible`);
+  for (const url of profile.mainEntity.sameAs) {
+    assert(html.includes(`href="${url}"`), `${route}: schema profile link is not visible`);
+  }
   assert.equal(
     [...html.matchAll(/<h1\b/g)].length,
     1,
@@ -89,5 +124,5 @@ assert.equal(
   "Résumé download must be a PDF",
 );
 console.log(
-  `Export audit passed: ${pages.size} pages, ${localLinks} local links, and PDF. Browser checks cover visual layout and interactions.`,
+  `Export audit passed: ${pages.size} pages, ${localLinks} local links, PDF, search metadata, profile schema, and 1200 × 630 social preview. Browser checks cover visual layout and interactions.`,
 );

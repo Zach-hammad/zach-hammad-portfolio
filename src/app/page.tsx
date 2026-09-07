@@ -7,10 +7,12 @@ import FoundationsSection from "@/components/sections/FoundationsSection";
 import TopBar from "@/components/TopBar";
 import PersonalSection from "@/components/sections/PersonalSection";
 import ContactFooter from "@/components/sections/ContactFooter";
+import ProfileSchema from "@/components/ProfileSchema";
 
 export default function Home() {
   return (
     <>
+      <ProfileSchema path="/" />
       <TopBar />
       <main id="main-content" tabIndex={-1} className="relative z-10">
         <HeroContainer />
