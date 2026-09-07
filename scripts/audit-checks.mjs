@@ -1,337 +1,93 @@
 import assert from "node:assert/strict";
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Audit the exported pages that will actually be hosted. Run after the build.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const read = (relativePath) =>
-  readFileSync(path.join(root, relativePath), "utf8");
+const output = path.join(root, "out");
+const origin = "https://zachariahammad.com";
+const routes = new Map([
+  ["/", "index.html"],
+  ["/resume", "resume.html"],
+]);
+const pages = new Map();
 
-function walk(dir) {
-  const entries = readdirSync(path.join(root, dir));
-  return entries.flatMap((entry) => {
-    const relativePath = path.join(dir, entry);
-    const absolutePath = path.join(root, relativePath);
-    return statSync(absolutePath).isDirectory()
-      ? walk(relativePath)
-      : [relativePath];
-  });
-}
-
-const srcFiles = walk("src").filter((file) => /\.(ts|tsx)$/.test(file));
-const sourceText = srcFiles.map(read).join("\n");
-
-for (const lowContrastClass of [
-  "text-neutral-500",
-  "text-neutral-600",
-  "text-neutral-700",
-  "text-text-muted",
-]) {
-  assert(
-    !sourceText.includes(lowContrastClass),
-    `Low-contrast class still present: ${lowContrastClass}`
+for (const [route, file] of routes) {
+  const location = path.join(output, file);
+  assert(existsSync(location), "Run bun run build before bun run audit.");
+  const html = readFileSync(location, "utf8").replace(
+    /<script\b[^>]*>[\s\S]*?<\/script>/gi,
+    "",
   );
-}
-
-const topBar = read("src/components/TopBar.tsx");
-assert(topBar.includes('aria-label="GitHub"'), "TopBar GitHub link needs an accessible name");
-assert(topBar.includes('aria-label="LinkedIn"'), "TopBar LinkedIn link needs an accessible name");
-assert(topBar.includes('aria-label="Email"'), "TopBar email link needs an accessible name");
-assert(topBar.includes("min-h-11"), "TopBar links need mobile-sized tap targets");
-
-const contactData = read("src/data/contact.ts");
-assert(
-  contactData.includes('resume: "/resume" as string | undefined'),
-  "Contact data should point resume links to the native /resume route"
-);
-assert(
-  contactData.includes('resumePdf: "/resume-zacharia-hammad.pdf"'),
-  "Contact data should expose the public resume PDF path separately"
-);
-assert(
-  existsSync(path.join(root, "public/resume-zacharia-hammad.pdf")),
-  "Public resume PDF should exist at /resume-zacharia-hammad.pdf"
-);
-
-assert(
-  existsSync(path.join(root, "src/data/resume.ts")),
-  "Structured resume data should exist"
-);
-assert(
-  existsSync(path.join(root, "src/app/resume/page.tsx")),
-  "Native resume route should exist at /resume"
-);
-const resumePage = read("src/app/resume/page.tsx");
-const resumeSource = `${resumePage}\n${read("src/data/resume.ts")}\n${contactData}`;
-for (const requiredResumeText of [
-  "TopBar",
-  "Professional Experience",
-  "Technical Skills",
-  "Visionary Solutions",
-  "Repotoire",
-  "Drexel University",
-  "/resume-zacharia-hammad.pdf",
-]) {
-  assert(
-    resumeSource.includes(requiredResumeText),
-    `Resume page missing required text: ${requiredResumeText}`
+  pages.set(route, html);
+  assert.equal(
+    [...html.matchAll(/<h1\b/g)].length,
+    1,
+    `${route}: expected one h1`,
   );
-}
-
-const proofData = read("src/data/proof.ts");
-for (const requiredProofText of [
-  "Full-Stack AI Engineer",
-  "I build AI systems end to end",
-  "AI Products & Agents",
-  "Retrieval & Knowledge Systems",
-  "Inference & Edge AI",
-  "Systems Foundation",
-  "Repotoire",
-  "110+ detectors",
-]) {
+  assert(html.includes('lang="en"'), `${route}: missing document language`);
   assert(
-    proofData.includes(requiredProofText),
-    `Proof data missing required text: ${requiredProofText}`
+    html.includes('name="viewport"'),
+    `${route}: missing responsive viewport`,
   );
-}
-assert(
-  proofData.includes("contact.resume"),
-  "Fast path links should read the optional resume URL from contact data"
-);
-
-const intro = read("src/components/sections/IntroSection.tsx");
-assert(!intro.includes("<h1"), "IntroSection should not add a second h1");
-assert(intro.includes("<h2"), "IntroSection should keep the repeated name as h2");
-
-const projectCard = read("src/components/cards/ProjectCard.tsx");
-assert(
-  projectCard.includes("View ${project.title} source on GitHub"),
-  "Project source links need project-specific accessible names"
-);
-assert(
-  projectCard.includes("Open ${project.title} demo"),
-  "Project demo links need project-specific accessible names"
-);
-assert(
-  projectCard.includes("borderLeftColor: accentColor"),
-  "ProjectCard should use accentColor instead of accepting an unused prop"
-);
-
-const professionalCard = read("src/components/cards/ProfessionalCard.tsx");
-assert(
-  professionalCard.includes("borderLeftColor: accentColor"),
-  "ProfessionalCard should use accentColor instead of accepting an unused prop"
-);
-
-const carousel = read("src/components/PhotoCarousel.tsx");
-assert(
-  carousel.includes("focus-visible:opacity-100"),
-  "Carousel controls need to appear on keyboard focus"
-);
-assert(
-  carousel.includes("opacity-100 md:opacity-0"),
-  "Carousel controls should be visible on touch/mobile viewports"
-);
-
-const staticHero = read("src/components/hero/StaticHero.tsx");
-assert(staticHero.includes("useReducedMotion"), "StaticHero should respect reduced motion");
-
-const heroCopy = read("src/components/hero/HeroCopy.tsx");
-assert(heroCopy.includes("<h1"), "HeroCopy should own the single page h1");
-assert(
-  heroCopy.includes("roleIdentity.eyebrow"),
-  "HeroCopy should render the Full-Stack AI Engineer eyebrow from proof data"
-);
-assert(
-  heroCopy.includes("roleIdentity.lead"),
-  "HeroCopy should render the role lead from proof data"
-);
-
-const fastPathLinksComponent = read("src/components/FastPathLinks.tsx");
-assert(
-  fastPathLinksComponent.includes("fastPathLinks.map"),
-  "FastPathLinks should render the proof data link list"
-);
-assert(
-  fastPathLinksComponent.includes("aria-label={link.ariaLabel}"),
-  "FastPathLinks anchors need descriptive accessible labels"
-);
-assert(
-  fastPathLinksComponent.includes("min-h-11"),
-  "FastPathLinks should keep mobile-sized tap targets"
-);
-assert(
-  staticHero.includes("<HeroCopy />"),
-  "StaticHero should render the shared hero copy"
-);
-
-const canvasHero = read("src/components/hero/CanvasHero.tsx");
-assert(
-  canvasHero.includes("<HeroCopy />"),
-  "CanvasHero should render the same visible hero copy as StaticHero"
-);
-
-const proofPillarsSection = read("src/components/sections/ProofPillarsSection.tsx");
-assert(
-  proofPillarsSection.includes("proofPillars.map"),
-  "ProofPillarsSection should render all proof pillars from data"
-);
-assert(
-  proofPillarsSection.includes("borderLeftColor: pillar.accentColor"),
-  "Proof pillar cards should preserve the existing left-accent card language"
-);
-
-const flagshipCaseStudySection = read("src/components/sections/FlagshipCaseStudy.tsx");
-assert(
-  flagshipCaseStudySection.includes("flagshipCaseStudy.problem"),
-  "FlagshipCaseStudy should render the problem narrative"
-);
-assert(
-  flagshipCaseStudySection.includes("flagshipCaseStudy.proof.map"),
-  "FlagshipCaseStudy should render proof tokens"
-);
-assert(
-  flagshipCaseStudySection.includes("min-h-11"),
-  "Flagship case study links need mobile-sized tap targets"
-);
-assert(
-  !flagshipCaseStudySection.includes('className="border border-neutral-800 bg-neutral-950/50 p-4"'),
-  "Flagship proof tokens should be flattened within the outer card, not nested in a bordered panel"
-);
-
-const pageFile = read("src/app/page.tsx");
-assert(
-  pageFile.includes("<ProofPillarsSection />"),
-  "Homepage should render proof pillars near the top"
-);
-assert(
-  pageFile.includes("<FlagshipCaseStudy />"),
-  "Homepage should render the Repotoire flagship case study"
-);
-
-const productionProofSection = read("src/components/sections/ProductionProofSection.tsx");
-assert(
-  productionProofSection.includes("professionalExperience.map"),
-  "ProductionProofSection should render professional experience from data"
-);
-assert(
-  productionProofSection.includes("NDA-SAFE PRODUCTION"),
-  "ProductionProofSection should label work as NDA-safe production proof"
-);
-
-const updatedPage = read("src/app/page.tsx");
-assert(
-  updatedPage.includes("<ProductionProofSection />"),
-  "Homepage should render production proof as its own section"
-);
-assert(
-  !updatedPage.includes("{professionalExperience.map((exp) =>"),
-  "Software & AI layer should not inline professional experience after production proof is split out"
-);
-
-const animatedSection = read("src/components/AnimatedSection.tsx");
-assert(
-  animatedSection.includes("useReducedMotion"),
-  "AnimatedSection should respect reduced motion"
-);
-
-const dragon = read("src/components/DragonCurveBackground.tsx");
-assert(
-  dragon.includes("prefers-reduced-motion: reduce"),
-  "Dragon background should respect reduced motion"
-);
-assert(dragon.includes("z-0"), "Dragon background should sit behind page content");
-assert(
-  dragon.includes("dragonGlow"),
-  "Dragon background should include a glow filter"
-);
-assert(
-  dragon.includes("glowPathRef"),
-  "Dragon background should render a separate glow path"
-);
-assert(
-  dragon.includes("ghostPathRef"),
-  "Dragon background should render a separate ghost/depth path"
-);
-assert(
-  dragon.includes("requestAnimationFrame"),
-  "Dragon scroll updates should be throttled with requestAnimationFrame"
-);
-assert(
-  dragon.includes("cancelAnimationFrame(rafRef.current);\n        rafRef.current = null;"),
-  "Dragon scroll cleanup should clear the pending animation frame ref"
-);
-assert(
-  dragon.includes('aria-hidden="true"'),
-  "Dragon background should be hidden from assistive technology"
-);
-assert(
-  !dragon.includes("if (reducedMotion) return null"),
-  "Reduced motion should use a static Dragon Curve fallback instead of always hiding it"
-);
-
-const page = read("src/app/page.tsx");
-assert(
-  page.includes('className="font-mono relative z-10"'),
-  "Main content should layer above the decorative dragon background"
-);
-
-const layout = read("src/app/layout.tsx");
-assert(layout.includes("metadataBase"), "Metadata should include a production metadataBase");
-assert(layout.includes("canonical"), "Metadata should include a canonical URL");
-assert(
-  layout.includes("Full-Stack AI Engineer"),
-  "Metadata should include the new Full-Stack AI Engineer positioning"
-);
-assert(
-  layout.includes("agents, retrieval, computer vision"),
-  "Metadata description should include core AI system capabilities"
-);
-
-const contactFooter = read("src/components/sections/ContactFooter.tsx");
-assert(
-  contactFooter.includes("roleIdentity.footerLine"),
-  "ContactFooter should render the role-specific closing line"
-);
-assert(
-  contactFooter.includes("<FastPathLinks />"),
-  "ContactFooter should reuse FastPathLinks"
-);
-
-const personalData = read("src/data/personal.ts");
-assert(!personalData.includes(".png"), "Referenced carousel images should not use .png extensions");
-
-const referencedImages = [...personalData.matchAll(/src: "([^"]+)"/g)].map(
-  (match) => match[1]
-);
-assert(referencedImages.length > 0, "Expected referenced personal images");
-
-for (const imagePath of referencedImages) {
-  assert(imagePath.endsWith(".jpg"), `Expected jpg path: ${imagePath}`);
-  const absolutePath = path.join(root, "public", imagePath);
-  assert(existsSync(absolutePath), `Missing referenced image: ${imagePath}`);
-  const signature = readFileSync(absolutePath).subarray(0, 2);
   assert(
-    signature[0] === 0xff && signature[1] === 0xd8,
-    `Referenced image is not JPEG data: ${imagePath}`
+    html.includes('id="main-content"'),
+    `${route}: skip-link target missing`,
   );
-}
-
-const formations = read("src/components/hero/stages/formations.ts");
-for (const unusedFunction of [
-  "orGate",
-  "notGate",
-  "muxGate",
-  "flipFlop",
-  "xorGate",
-  "nandGate",
-  "adderBlock",
-  "comparatorBlock",
-]) {
   assert(
-    !formations.includes(`function ${unusedFunction}`),
-    `Unused formation helper still present: ${unusedFunction}`
+    html.includes(
+      `rel="canonical" href="${origin}${route === "/" ? "" : route}"`,
+    ) || html.includes(`rel="canonical" href="${origin}${route}"`),
+    `${route}: incorrect canonical`,
   );
+
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(
+    new Set(ids).size,
+    ids.length,
+    `${route}: duplicate element ids`,
+  );
+  for (const title of html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/g)) {
+    assert(title[1].trim(), `${route}: exported page or SVG title is empty`);
+  }
+  for (const image of html.matchAll(/<img\b([^>]+)>/g)) {
+    assert(/\balt="/.test(image[1]), `${route}: image missing alt attribute`);
+  }
 }
 
-console.log("Portfolio audit checks passed.");
+let localLinks = 0;
+for (const [route, html] of pages) {
+  for (const match of html.matchAll(/<a\b[^>]*\bhref="([^"]*)"/g)) {
+    const href = match[1].replaceAll("&amp;", "&");
+    assert(href && href !== "#", `${route}: empty or placeholder link`);
+    const target = new URL(href, origin + route);
+    if (target.origin !== origin) continue;
+    localLinks++;
+    const pathname = decodeURIComponent(target.pathname);
+    const page = pages.get(pathname);
+    if (page !== undefined) {
+      if (target.hash) {
+        const id = decodeURIComponent(target.hash.slice(1));
+        assert(page.includes(`id="${id}"`), `${route}: broken anchor ${href}`);
+      }
+    } else {
+      const asset = path.join(output, pathname);
+      assert(
+        asset.startsWith(output + path.sep),
+        "Asset escapes export directory",
+      );
+      assert(existsSync(asset), `${route}: missing exported asset ${href}`);
+    }
+  }
+}
+
+const pdf = readFileSync(path.join(output, "resume-zacharia-hammad.pdf"));
+assert.equal(
+  pdf.subarray(0, 5).toString(),
+  "%PDF-",
+  "Résumé download must be a PDF",
+);
+console.log(
+  `Export audit passed: ${pages.size} pages, ${localLinks} local links, and PDF. Browser checks cover visual layout and interactions.`,
+);

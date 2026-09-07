@@ -1,85 +1,44 @@
 import { Project } from "@/lib/types";
 
 export const projects: Project[] = [
-  // Layer: Hardware
   {
-    slug: "zrisc",
-    title: "ZRISC-32V",
+    slug: "apu",
+    title: "Agent Processing Unit",
     description:
-      "Custom 32-bit RISC processor with vector extensions in modern C++. Pipelining, hazards, caches, FMA — designed for ML workloads.",
-    technologies: ["C++", "RISC", "Vector Extensions", "ML"],
-    githubUrl: "https://github.com/Zach-hammad/zrisc",
-    layer: "hardware",
-  },
-  {
-    slug: "risc-v",
-    title: "RISC-V CPU",
-    description:
-      "Pipelined RISC-V CPU in C with branch prediction, out-of-order execution, and a PC-signature hit predictor. Evolved from single-cycle to fully pipelined.",
-    technologies: ["C", "RISC-V", "Pipelining", "Branch Prediction"],
-    githubUrl: "https://github.com/Zach-hammad/RISC-V",
-    layer: "hardware",
-  },
-
-  // Layer: Systems
-  {
-    slug: "nanochat-riscv",
-    title: "nanochat-riscv",
-    description:
-      "Rust workspace (ISA / simulator / assembler / RTL) running a nanochat-style LLM on a custom RISC-V target.",
-    technologies: ["Rust", "RISC-V", "LLM", "Simulator"],
-    githubUrl: "https://github.com/Zach-hammad/nanochat-riscv",
+      "I’m building RepoToire’s Agent Processing Unit in Rust. It applies an instruction cycle to agent work: fetch an approved instruction, dispatch it, check the result, and retire its effects into machine state.",
+    technologies: ["Rust", "Runtime systems", "Instruction sets"],
+    githubUrl: "https://github.com/Zach-hammad/repotoire-v2",
     layer: "systems",
   },
   {
-    slug: "lc3-vm",
-    title: "LC-3 Virtual Machine",
+    slug: "risc-v",
+    title: "RISC-V architecture",
     description:
-      "16-bit educational architecture implemented in C. Memory-mapped I/O, trap routines; runs 2048 and Rogue.",
-    technologies: ["C", "Virtual Machines", "Systems Programming"],
+      "Computer-architecture coursework in C simulation, exploring instruction execution, pipelining, and branch prediction.",
+    technologies: ["C", "RISC-V", "Coursework"],
+    githubUrl: "https://github.com/Zach-hammad/RISC-V",
+    layer: "hardware",
+  },
+  {
+    slug: "lc3-vm",
+    title: "LC-3 virtual machine",
+    description:
+      "A 16-bit educational architecture implemented in C, with memory-mapped I/O and trap routines. A way to learn what an instruction actually asks the machine to do.",
+    technologies: ["C", "Virtual machines", "ISA"],
     githubUrl: "https://github.com/Zach-hammad/lc3-vm",
     layer: "systems",
   },
   {
     slug: "chip-8-sim",
-    title: "CHIP-8 Emulator",
+    title: "CHIP-8 emulator",
     description:
-      "Python + pygame interpreter for the classic 8-bit virtual machine with full hex-keypad mapping.",
-    technologies: ["Python", "Emulation", "Interpreters"],
+      "An interpreter for the classic virtual machine, built with Python and pygame. Instruction decoding, display state, and a hex-keypad interface.",
+    technologies: ["Python", "Emulation", "pygame"],
     githubUrl: "https://github.com/Zach-hammad/chip_8_sim",
     layer: "systems",
-  },
-
-  // Layer: Software & AI
-  {
-    slug: "repotoire",
-    title: "Repotoire",
-    description:
-      "Graph-powered code analysis CLI in pure Rust. 110+ detectors across 9 languages over a knowledge graph of the codebase. Single binary; ships via Homebrew and a GitHub Action.",
-    technologies: ["Rust", "CLI", "Static Analysis", "Knowledge Graph"],
-    githubUrl: "https://github.com/Zach-hammad/repotoire",
-    layer: "software",
-  },
-  {
-    slug: "tqvec",
-    title: "tqvec",
-    description:
-      "Rust library for compressed approximate nearest-neighbor search. Implements TurboQuant (Zandieh et al., 2025) on a custom HNSW graph; ~8–14× memory reduction at 4-bit with 0.995+ cosine similarity.",
-    technologies: ["Rust", "HNSW", "Quantization", "ANN"],
-    githubUrl: "https://github.com/Zach-hammad/tqvec",
-    layer: "software",
-  },
-  {
-    slug: "zkip-stark",
-    title: "zkip-stark",
-    description:
-      "Zero-knowledge IP-layer protocol experiment using STARK proofs, with a Lean 4 formalization and recursive proof support.",
-    technologies: ["Rust", "ZK", "STARK", "Lean 4"],
-    githubUrl: "https://github.com/Zach-hammad/zkip-stark",
-    layer: "software",
   },
 ];
 
 export function getProjectsByLayer(layer: Project["layer"]): Project[] {
-  return projects.filter((p) => p.layer === layer);
+  return projects.filter((project) => project.layer === layer);
 }

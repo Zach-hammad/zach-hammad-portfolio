@@ -9,15 +9,27 @@ export interface Project {
 }
 
 export interface ProfessionalExperience {
+  id: "computer-vision" | "ai-memory" | "voice-agents";
   area: string;
+  category: string;
   description: string;
+  summary: string;
   technologies: string[];
+  flow: string[];
+  notes: string[];
+}
+
+export interface PersonalPhoto {
+  src: string;
+  alt: string;
+  fit?: "contain" | "cover";
+  position?: string;
 }
 
 export interface PersonalSection {
   title: string;
   description: string;
-  images?: { src: string; alt: string }[];
+  images?: PersonalPhoto[];
 }
 
 export interface GitHubStats {

@@ -1,36 +1,57 @@
-import AnimatedSection from "@/components/AnimatedSection";
-import ProfessionalCard from "@/components/cards/ProfessionalCard";
 import { professionalExperience } from "@/data/professional";
+import ComputerVisionDiagram from "@/components/ComputerVisionDiagram";
+import MemoryDiagram from "@/components/MemoryDiagram";
+import VoiceAgentDiagram from "@/components/VoiceAgentDiagram";
 
 export default function ProductionProofSection() {
   return (
-    <section className="py-20 px-4 font-mono">
-      <div className="max-w-5xl mx-auto">
-        <AnimatedSection>
-          <div className="mb-12">
-            <div className="text-xs text-neutral-400 mb-6">
-              {"// "}NDA-SAFE PRODUCTION
-            </div>
-            <h2 className="text-2xl md:text-3xl font-normal text-neutral-200 mb-3">
-              Production systems without private details
-            </h2>
-            <p className="text-sm text-neutral-400 max-w-2xl leading-relaxed">
-              High-level proof from real work: inference, knowledge systems,
-              product surfaces, infrastructure, and edge deployment.
-            </p>
-          </div>
-        </AnimatedSection>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {professionalExperience.map((experience, index) => (
-            <AnimatedSection key={experience.area} delay={index * 0.08}>
-              <ProfessionalCard
-                experience={experience}
-                accentColor="#c084fc"
-              />
-            </AnimatedSection>
-          ))}
-        </div>
+    <section
+      id="production"
+      className="production-section"
+      aria-labelledby="production-title"
+    >
+      <div className="section-context">
+        <h3 id="production-title">At Visionary Solutions</h3>
+        <p>
+          Software Engineer <span aria-hidden="true">/</span> Aug 2025 — Present
+        </p>
       </div>
+      <p className="work-privacy-note">
+        Selected work, with project names and details generalized. Diagrams use illustrative examples.
+      </p>
+      {professionalExperience.map((experience, index) => (
+        <article
+          className="work-row work-row-animated"
+          id={experience.id}
+          key={experience.id}
+        >
+          <div className="work-index">0{index + 2}</div>
+          <div className="work-row-copy">
+            <p className="eyebrow">{experience.category}</p>
+            <h4>{experience.area}</h4>
+            <p className="work-tagline">{experience.description}</p>
+            <p className="work-summary">{experience.summary}</p>
+            <details className="engineering-notes">
+              <summary>
+                Engineering notes{" "}
+                <span className="detail-symbol" aria-hidden="true" />
+              </summary>
+              <div className="notes-body">
+                {experience.notes.map((note) => (
+                  <p key={note}>{note}</p>
+                ))}
+              </div>
+            </details>
+          </div>
+          {experience.id === "computer-vision" ? (
+            <ComputerVisionDiagram />
+          ) : experience.id === "ai-memory" ? (
+            <MemoryDiagram />
+          ) : (
+            <VoiceAgentDiagram />
+          )}
+        </article>
+      ))}
     </section>
   );
 }
