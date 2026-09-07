@@ -18,7 +18,18 @@ export default function ContactFooter() {
         </div>
         <div className="footer-bottom">
           <p>
-            <span className="mb-1 block text-xs">I built this site with AI.</span>
+            <span className="mb-1 block text-xs">
+              I built this site with AI.{" "}
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ask me how I built this site with AI on LinkedIn"
+                className="underline underline-offset-4 hover:text-[var(--accent)]"
+              >
+                Ask me how.
+              </a>
+            </span>
             © {new Date().getFullYear()} Zacharia Hammad
           </p>
           <FastPathLinks />
