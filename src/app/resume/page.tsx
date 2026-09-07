@@ -4,23 +4,32 @@ import { ArrowUpRight, Download } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { contact } from "@/data/contact";
 import { resume } from "@/data/resume";
+import { site } from "@/data/site";
+import ProfileSchema from "@/components/ProfileSchema";
 
 export const metadata: Metadata = {
-  title: "Résumé | Zacharia Hammad",
-  description:
-    "Software engineer building AI products, computer-vision pipelines, knowledge graphs, and Rust developer tools.",
+  title: "Zacharia Hammad Résumé | Software Engineer, AI Products",
+  description: resume.summary,
   alternates: { canonical: "/resume" },
   openGraph: {
-    title: "Résumé | Zacharia Hammad",
-    description: "AI products, computer vision, and runtime systems.",
+    title: "Zacharia Hammad Résumé | Software Engineer, AI Products",
+    description: resume.summary,
     url: "/resume",
     type: "profile",
+    images: [site.socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zacharia Hammad Résumé | Software Engineer, AI Products",
+    description: resume.summary,
+    images: [site.socialImage],
   },
 };
 
 export default function ResumePage() {
   return (
     <>
+      <ProfileSchema path="/resume" />
       <TopBar />
       <main id="main-content" tabIndex={-1} className="resume-page shell">
         <header className="resume-header">

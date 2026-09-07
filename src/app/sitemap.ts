@@ -1,20 +1,15 @@
 import { MetadataRoute } from "next";
+import { site } from "@/data/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://zachariahammad.com",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
+      url: `${site.url}/`,
     },
     {
-      url: "https://zachariahammad.com/resume",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      url: `${site.url}/resume`,
     },
   ];
 }
