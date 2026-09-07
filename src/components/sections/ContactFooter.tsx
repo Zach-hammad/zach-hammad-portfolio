@@ -17,7 +17,10 @@ export default function ContactFooter() {
           <p>AI products · Developer tools · Computer architecture</p>
         </div>
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Zacharia Hammad</p>
+          <p>
+            <span className="mb-1 block text-xs">I built this site with AI.</span>
+            © {new Date().getFullYear()} Zacharia Hammad
+          </p>
           <FastPathLinks />
         </div>
       </div>
