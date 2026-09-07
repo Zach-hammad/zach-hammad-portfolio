@@ -4,9 +4,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { PersonalPhoto } from "@/lib/types";
 
 interface PhotoCarouselProps {
-  images: { src: string; alt: string }[];
+  images: PersonalPhoto[];
 }
 
 export default function PhotoCarousel({ images }: PhotoCarouselProps) {
@@ -19,16 +20,17 @@ export default function PhotoCarousel({ images }: PhotoCarouselProps) {
 
   return (
     <div className="relative group">
-      <div className="overflow-hidden rounded-lg" ref={emblaRef}>
+      <div className="overflow-hidden rounded-lg bg-background" ref={emblaRef}>
         <div className="flex">
-          {images.map((image, index) => (
-            <div key={index} className="flex-none w-full min-w-0">
+          {images.map((image) => (
+            <div key={image.src} className="flex-none w-full min-w-0">
               <div className="relative aspect-[4/3]">
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover"
+                  className={image.fit === "cover" ? "object-cover" : "object-contain"}
+                  style={{ objectPosition: image.position }}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
@@ -36,20 +38,24 @@ export default function PhotoCarousel({ images }: PhotoCarouselProps) {
           ))}
         </div>
       </div>
-      <button
-        onClick={scrollPrev}
-        className={`${controlClass} left-2`}
-        aria-label="Previous image"
-      >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        onClick={scrollNext}
-        className={`${controlClass} right-2`}
-        aria-label="Next image"
-      >
-        <ChevronRight size={20} />
-      </button>
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={scrollPrev}
+            className={`${controlClass} left-2`}
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={scrollNext}
+            className={`${controlClass} right-2`}
+            aria-label="Next image"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </>
+      )}
     </div>
   );
 }

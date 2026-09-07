@@ -7,119 +7,74 @@ export interface FastPathLink {
   external?: boolean;
 }
 
-export interface ProofPillar {
-  title: string;
-  claim: string;
-  tokens: string[];
-  accentColor: string;
-}
-
-export interface CaseStudyLink {
-  label: string;
-  href: string;
-  ariaLabel: string;
-  external?: boolean;
-}
-
 export const roleIdentity = {
-  eyebrow: "Full-Stack AI Engineer",
+  eyebrow: "Software engineer · AI products & systems",
   name: "Zacharia Hammad",
-  systemsLine: "Transistors -> Logic -> Architecture -> Assembly -> Code -> AI",
-  lead:
-    "I build AI systems end to end: agents, retrieval, computer vision, infrastructure, and the low-level foundations they run on.",
+  systemsLine: "Product → Intelligence → Runtime → Architecture",
+  lead: "At Visionary Solutions, I work on computer vision, knowledge graphs, and voice agents. Outside work, I’m building an AI-agent runtime in Rust.",
   intro:
-    "Computer Engineering graduate from Drexel University. I move comfortably from CPU design and virtual machines to production AI pipelines, graph systems, and full-stack product surfaces.",
-  footerLine: "Building AI systems from product surface to metal.",
+    "I studied computer engineering at Drexel. My work spans ML pipelines and product interfaces; my personal projects explore runtimes and processor design.",
+  footerLine: "Get in touch.",
 } as const;
 
-export const proofPillars: ProofPillar[] = [
+export const proofPillars = [
   {
-    title: "AI Products & Agents",
-    claim:
-      "I build user-facing AI systems that turn models into useful workflows.",
-    tokens: ["Scout", "voice agents", "dashboards", "workflow systems"],
-    accentColor: "#c084fc",
+    title: "AI products",
+    claim: "Computer vision, voice agents, and knowledge graphs.",
+    tokens: ["Python", "TypeScript", "ML"],
+    accentColor: "var(--accent)",
   },
   {
-    title: "Retrieval & Knowledge Systems",
-    claim:
-      "I design the graph and vector layers that make AI systems context-aware.",
-    tokens: ["Neo4j", "vector search", "Repotoire", "tqvec"],
-    accentColor: "#60a5fa",
+    title: "Runtime systems",
+    claim: "Execution, state, and what happens when things fail.",
+    tokens: ["Rust", "Quint", "Pipelines"],
+    accentColor: "var(--accent)",
   },
   {
-    title: "Inference & Edge AI",
-    claim:
-      "I ship model pipelines where latency, GPUs, and hardware constraints matter.",
-    tokens: ["DeepStream", "TensorRT", "CUDA", "Hailo", "Raspberry Pi"],
-    accentColor: "#f59e0b",
+    title: "Computer architecture",
+    claim: "From instruction sets to timing and area tradeoffs.",
+    tokens: ["RISC-V", "Tcl", "ASIC"],
+    accentColor: "var(--brass)",
   },
-  {
-    title: "Systems Foundation",
-    claim:
-      "I understand the lower layers because I have built processors, VMs, and emulators.",
-    tokens: ["RISC-V", "virtual machines", "emulators", "Rust", "C/C++"],
-    accentColor: "#4ade80",
-  },
-];
-
-const resumeLinks: FastPathLink[] = contact.resume
-  ? [
-      {
-        label: "resume",
-        href: contact.resume,
-        ariaLabel: "Open Zacharia Hammad resume",
-        external: false,
-      },
-    ]
-  : [];
+] as const;
 
 export const fastPathLinks: FastPathLink[] = [
-  ...resumeLinks,
+  ...(contact.resume
+    ? [
+        {
+          label: "résumé",
+          href: contact.resume,
+          ariaLabel: "Open Zacharia Hammad resume",
+        },
+      ]
+    : []),
   {
-    label: "github",
+    label: "GitHub",
     href: contact.github,
     ariaLabel: "Open Zacharia Hammad GitHub profile",
     external: true,
   },
   {
-    label: "linkedin",
+    label: "LinkedIn",
     href: contact.linkedin,
     ariaLabel: "Open Zacharia Hammad LinkedIn profile",
     external: true,
   },
   {
-    label: "email",
+    label: "Email",
     href: `mailto:${contact.email}`,
     ariaLabel: "Email Zacharia Hammad",
-    external: false,
   },
 ];
 
 export const flagshipCaseStudy = {
-  eyebrow: "FLAGSHIP CASE STUDY",
-  title: "Repotoire",
-  subtitle: "Graph-powered code intelligence for AI-assisted engineering.",
+  title: "RepoToire",
+  subtitle: "A runtime for AI coding agents.",
   problem:
-    "AI coding agents need accurate codebase context before they can make reliable changes.",
+    "An agent can propose a change. Deciding what may execute, what counts as success, and when to stop needs a clearer contract.",
   approach:
-    "Repotoire builds a knowledge graph of a repository, runs language-aware detectors, and packages the result as a fast Rust CLI.",
+    "I’m building a Rust runtime around an instruction set for coding agents. Codebase context informs a Goal Program; a compiler turns that program into an executable. Approval is tied to that exact image before the runtime admits it.",
   result:
-    "110+ detectors across 9 languages, shipped as a single binary with Homebrew distribution and a GitHub Action path.",
-  proof: [
-    "Rust single binary",
-    "110+ detectors",
-    "9 languages",
-    "knowledge graph",
-    "Homebrew",
-    "GitHub Action",
-  ],
-  links: [
-    {
-      label: "src",
-      href: "https://github.com/Zach-hammad/repotoire",
-      ariaLabel: "View Repotoire source on GitHub",
-      external: true,
-    },
-  ] satisfies CaseStudyLink[],
+    "Conformance tests replay Quint traces against the Rust runtime and compare the execution stage, instruction, and Machine state.",
+  proof: ["Rust", "Quint", "Code intelligence", "Runtime prototype"],
 } as const;
