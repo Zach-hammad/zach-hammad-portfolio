@@ -18,7 +18,7 @@ export const resume = {
   title: "Software Engineer in AI Products and Developer Tools",
   summary:
     "Software engineer building AI products and developer tools in Python, TypeScript, and Rust. Owns computer-vision development from data and model training through user-facing applications.",
-  details: ["Washington, DC Area", "Targeting SF Bay Area", contact.email],
+  details: ["Washington, DC Area", contact.email],
   skillGroups: [
     {
       label: "Languages",

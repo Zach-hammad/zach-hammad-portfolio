@@ -24,10 +24,7 @@ export default function HeroCopy() {
           View résumé <ArrowUpRight size={17} aria-hidden="true" />
         </Link>
       </div>
-      <p className="hero-location">
-        Based in the DC area <span aria-hidden="true">/</span> Interested in San
-        Francisco
-      </p>
+      <p className="hero-location">Based in the DC area</p>
     </div>
   );
 }
