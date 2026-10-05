@@ -1484,11 +1484,12 @@ details[open] .detail-symbol::after {
   top: 12px;
 }
 .resume-page {
+  max-width: 880px;
   padding-bottom: 80px;
 }
 .resume-header {
   padding-top: 70px;
-  padding-bottom: 44px;
+  padding-bottom: 26px;
 }
 .resume-header h1 {
   font-size: clamp(38px, 5vw, 62px);
@@ -1513,14 +1514,20 @@ details[open] .detail-symbol::after {
   align-items: center;
   flex-wrap: wrap;
 }
+.resume-links {
+  margin-top: 12px;
+}
+.resume-meta a {
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .resume-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: 80px;
+  display: block;
 }
 .resume-section {
   border-top: 1px solid var(--line);
-  padding-top: 30px;
+  padding-top: 24px;
   margin-top: 30px;
 }
 .resume-section h2 {
@@ -1529,7 +1536,7 @@ details[open] .detail-symbol::after {
   font-family: ui-monospace, monospace;
   letter-spacing: 0.07em;
   color: var(--accent);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 .resume-entry {
   margin-bottom: 32px;
@@ -1538,22 +1545,16 @@ details[open] .detail-symbol::after {
   font-size: 18px;
 }
 .resume-entry header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
   margin-bottom: 12px;
-}
-.resume-entry header p {
-  font:
-    10px/1.5 ui-monospace,
-    monospace;
-  color: var(--muted);
 }
 .resume-entry .resume-role {
   font-size: 13px;
   color: #c5cdc3;
   margin-top: 6px;
+}
+.resume-period {
+  display: inline-block;
+  color: var(--muted);
 }
 .resume-entry ul {
   list-style: disc;
@@ -1635,9 +1636,6 @@ details[open] .detail-symbol::after {
   }
   .personal-grid {
     gap: 20px;
-  }
-  .resume-layout {
-    gap: 40px;
   }
 }
 @media (max-width: 767px) {
@@ -1850,14 +1848,6 @@ details[open] .detail-symbol::after {
   .resume-header {
     padding-top: 45px;
   }
-  .resume-layout {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .resume-entry header {
-    flex-direction: column;
-    gap: 6px;
-  }
   .resume-entry li,
   .resume-entry > p {
     font-size: 16px;
@@ -1903,9 +1893,6 @@ details[open] .detail-symbol::after {
   }
   .resume-header {
     padding-top: 0;
-  }
-  .resume-layout {
-    display: block;
   }
   .resume-entry {
     break-inside: avoid;
