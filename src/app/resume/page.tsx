@@ -38,8 +38,23 @@ export default function ResumePage() {
           <p className="resume-title">{resume.title}</p>
           <div className="resume-meta">
             {resume.details.map((detail) => (
-              <span key={detail}>{detail}</span>
+              <span key={detail}>
+                {detail === contact.email ? (
+                  <a href={`mailto:${contact.email}`}>{detail}</a>
+                ) : (
+                  detail
+                )}
+              </span>
             ))}
+          </div>
+          <div className="resume-meta resume-links">
+            <a href={site.url}>{new URL(site.url).hostname}</a>
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+              {contact.linkedin.replace("https://www.", "").replace(/\/$/, "")}
+            </a>
+            <a href={contact.github} target="_blank" rel="noopener noreferrer">
+              {contact.github.replace("https://", "")}
+            </a>
           </div>
           <nav aria-label="Resume actions" className="resume-actions">
             <a
@@ -53,86 +68,72 @@ export default function ResumePage() {
             <Link className="text-link" href="/">
               View selected work <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
-            <a
-              className="text-link"
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              className="text-link"
-              href={contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
           </nav>
         </header>
         <p className="resume-summary">{resume.summary}</p>
         <div className="resume-layout">
-          <div>
-            <section
-              className="resume-section"
-              aria-labelledby="experience-title"
-            >
-              <h2 id="experience-title">Professional Experience</h2>
-              {resume.experience.map((experience) => (
-                <article key={experience.organization} className="resume-entry">
-                  <header>
-                    <div>
-                      <h3>{experience.organization}</h3>
-                      <p className="resume-role">{experience.role}</p>
-                    </div>
-                    <p>{experience.period}</p>
-                  </header>
-                  <ul>
-                    {experience.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </section>
-            <section
-              className="resume-section"
-              aria-labelledby="projects-title"
-            >
-              <h2 id="projects-title">Selected projects</h2>
-              {resume.projects.map((project) => (
-                <article key={project.name} className="resume-entry">
-                  <h3>{project.name}</h3>
-                  <p className="resume-role">{project.stack}</p>
-                  <p>{project.description}</p>
-                </article>
-              ))}
-            </section>
-          </div>
-          <aside aria-label="Skills and education">
-            <section className="resume-section" aria-labelledby="skills-title">
-              <h2 id="skills-title">Technical Skills</h2>
-              {resume.skillGroups.map((group) => (
-                <div className="resume-skill" key={group.label}>
-                  <h3>{group.label}</h3>
-                  <p>{group.items.join(" · ")}</p>
-                </div>
-              ))}
-            </section>
-            <section
-              className="resume-section"
-              aria-labelledby="education-title"
-            >
-              <h2 id="education-title">Education & certification</h2>
-              <div className="resume-entry">
-                <h3>{resume.education.school}</h3>
-                <p>{resume.education.degree}</p>
-                <p>{resume.education.detail}</p>
-                <p>{resume.education.certification}</p>
+          <section className="resume-section" aria-labelledby="skills-title">
+            <h2 id="skills-title">Technical Skills</h2>
+            {resume.skillGroups.map((group) => (
+              <div className="resume-skill" key={group.label}>
+                <h3>{group.label}</h3>
+                <p>{group.items.join(", ")}</p>
               </div>
-            </section>
-          </aside>
+            ))}
+          </section>
+          <section className="resume-section" aria-labelledby="experience-title">
+            <h2 id="experience-title">Professional Experience</h2>
+            {resume.experience.map((experience) => (
+              <article key={experience.organization} className="resume-entry">
+                <header>
+                  <h3>{experience.organization}</h3>
+                  <p className="resume-role">
+                    {experience.role}
+                    {" | "}
+                    <span className="resume-period">{experience.period}</span>
+                  </p>
+                </header>
+                <ul>
+                  {experience.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </section>
+          <section className="resume-section" aria-labelledby="projects-title">
+            <h2 id="projects-title">Projects</h2>
+            {resume.projects.map((project) => (
+              <article key={project.name} className="resume-entry">
+                <h3>{project.name}</h3>
+                <p className="resume-role">{project.stack}</p>
+                <p>{project.description}</p>
+              </article>
+            ))}
+          </section>
+          <section className="resume-section" aria-labelledby="education-title">
+            <h2 id="education-title">Education</h2>
+            <div className="resume-entry">
+              <header>
+                <h3>{resume.education.school}</h3>
+                <p className="resume-role">{resume.education.period}</p>
+              </header>
+              <p>
+                {resume.education.degree} | {resume.education.minor} | GPA {resume.education.gpa}
+              </p>
+            </div>
+          </section>
+          <section className="resume-section" aria-labelledby="certifications-title">
+            <h2 id="certifications-title">Certifications</h2>
+            {resume.certifications.map((certification) => (
+              <article key={certification.name} className="resume-entry">
+                <header>
+                  <h3>{certification.name}</h3>
+                  <p className="resume-role">{certification.period}</p>
+                </header>
+              </article>
+            ))}
+          </section>
         </div>
       </main>
     </>

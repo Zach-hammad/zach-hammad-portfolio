@@ -16,10 +16,18 @@ Open http://localhost:3000. The homepage and résumé are rendered to HTML; proj
 - `src/data/proof.ts`: positioning, RepoToire, and contact shortcuts.
 - `src/data/professional.ts`: Generalized employer case studies: Computer Vision, AI Memory, and Voice Agents.
 - `src/data/projects.ts`: public architecture projects and source links.
-- `src/data/resume.ts` and `public/resume-zacharia-hammad.pdf`: web résumé and PDF download. Update both together.
+- `src/data/resume.ts`: authoritative résumé content for the web page and PDF download.
 - `src/data/personal.ts`: personal stories and photos; ASIC coursework lives in `src/components/sections/FoundationsSection.tsx`.
 
 Page composition lives in `src/app/page.tsx`; the visual system lives in `src/app/globals.css`. Diagrams describe conceptual flows and should not be presented as product screenshots or measured hardware results. Keep prototype and coursework boundaries explicit when updating project descriptions.
+
+After editing résumé content, regenerate the committed PDF with Bun and a Python environment that has ReportLab installed:
+
+```sh
+python3 scripts/generate-resume.py
+```
+
+The generator reads the same TypeScript data as `/resume`, keeps contact links selectable, and rejects a result longer than one page. Python is an authoring dependency; the website build uses the committed PDF.
 
 ## Verification and hosting
 

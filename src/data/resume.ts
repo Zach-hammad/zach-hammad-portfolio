@@ -15,9 +15,9 @@ export interface ResumeProject {
 
 export const resume = {
   name: "Zacharia Hammad",
-  title: "Software Engineer in AI Products and Developer Tools",
+  title: "Software Engineer | AI Products & Developer Tools",
   summary:
-    "Software engineer building AI products and developer tools in Python, TypeScript, and Rust. Owns computer-vision development from data and model training through user-facing applications.",
+    "Software engineer building AI products and developer tools in Python, TypeScript, and Rust, with experience in computer vision, voice agents, and graph-backed applications.",
   details: ["Washington, DC Area", contact.email],
   skillGroups: [
     {
@@ -25,7 +25,7 @@ export const resume = {
       items: ["Python", "TypeScript", "JavaScript", "Rust", "SQL", "Tcl"],
     },
     {
-      label: "Product and APIs",
+      label: "Frameworks and APIs",
       items: [
         "React",
         "Next.js",
@@ -52,27 +52,27 @@ export const resume = {
     {
       role: "Software Engineer",
       organization: "Visionary Solutions",
-      period: "Aug 2025 — Present",
+      period: "Aug 2025 - Present",
       bullets: [
-        "Owned a computer-vision product from data sourcing and labeling through model training and the user-facing application.",
-        "Built shared TypeScript voice-agent tool execution across VAPI and OpenAI Realtime, binding actions to verified caller identity.",
-        "Built Neo4j infrastructure for identity matching and conversation context, with access controls for AI applications.",
-        "Built YOLO/ONNX training and release tooling with MLflow tracking, evaluation, and model promotion/rollback; integrated NVIDIA DeepStream inference.",
-        "Built reliable event delivery between services using PostgreSQL and Kafka.",
+        "Owned computer-vision product development across data sourcing, labeling, model training, and the user-facing application.",
+        "Implemented shared TypeScript tool execution for VAPI and OpenAI Realtime voice agents, tying actions to verified caller identities.",
+        "Built Neo4j identity matching and conversation context with access controls for AI applications.",
+        "Developed YOLO/ONNX training and release tooling with MLflow tracking, evaluation, and model promotion and rollback; integrated NVIDIA DeepStream inference.",
+        "Implemented event delivery between services using PostgreSQL and Kafka.",
       ],
     },
     {
       role: "UAS Engineering Co-op",
       organization: "PECO / Exelon",
-      period: "Sep 2023 — Mar 2024",
+      period: "Sep 2023 - Mar 2024",
       bullets: [
-        "Automated drone reporting with Python/APIs, cutting preparation from two hours to under 30 minutes.",
+        "Automated drone reports with Python and APIs, reducing preparation time from two hours to under 30 minutes.",
       ],
     },
     {
       role: "Engineering Co-op",
       organization: "NAVSEA",
-      period: "Sep 2022 — Mar 2023",
+      period: "Sep 2022 - Mar 2023",
       bullets: [
         "Improved submarine simulation algorithms and sensor models; documented gas-sensor workflows.",
       ],
@@ -80,7 +80,7 @@ export const resume = {
     {
       role: "Research and Development Co-op",
       organization: "Saint-Gobain",
-      period: "Sep 2021 — Mar 2022",
+      period: "Sep 2021 - Mar 2022",
       bullets: [
         "Analyzed materials experiments with Python, MATLAB, and statistics to identify process improvements.",
       ],
@@ -91,7 +91,7 @@ export const resume = {
       name: "RepoToire",
       stack: "Rust and Quint",
       description:
-        "Built a Rust runtime prototype for AI coding agents with validated execution plans, staged execution, bounded retries, and Quint-to-Rust conformance tests.",
+        "Developed a Rust runtime prototype for AI coding agents with validated execution plans, staged execution, bounded retries, and Quint-to-Rust conformance tests.",
     },
     {
       name: "ML Pothole Detection System",
@@ -103,13 +103,17 @@ export const resume = {
       name: "ASIC Design Optimization",
       stack: "Drexel Course Project",
       description:
-        "In a two-person project, adapted Tcl scripts for Synopsys design flows to compare timing and area across five benchmark circuits using SkyWater and ASAP7 libraries.",
+        "Adapted Tcl scripts for Synopsys design flows in a two-person course project, comparing timing and area across five benchmark circuits using SkyWater and ASAP7 libraries.",
     },
   ] satisfies ResumeProject[],
   education: {
     school: "Drexel University",
-    degree: "B.S. Computer Engineering · Minor in Data Science",
-    detail: "GPA 3.69 · Jun 2025",
-    certification: "Neo4j Certified Professional · Aug 2026",
+    period: "Jun 2025",
+    degree: "B.S. Computer Engineering",
+    minor: "Minor in Data Science",
+    gpa: "3.69",
   },
+  certifications: [
+    { name: "Neo4j Certified Professional", period: "Aug 2026" },
+  ],
 } as const;
