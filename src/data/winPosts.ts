@@ -8,12 +8,12 @@ export const winPosts = [
       "Real-time road hazard detection with computer vision and geotagged reports.",
     detail: null,
     technologies: [],
-    author: "Quentin Carrel",
+    author: "Drexel University School of Engineering",
     embedUrl:
-      "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7337359231731355648?collapsed=1",
+      "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7337936873501192192?collapsed=1",
     postUrl:
-      "https://www.linkedin.com/feed/update/urn:li:activity:7337538927110594560/",
-    linkLabel: "My win announcement",
+      "https://www.linkedin.com/feed/update/urn:li:activity:7337936874633678851/",
+    linkLabel: "Drexel’s official announcement",
   },
   {
     id: "saving-spree",
