@@ -6,9 +6,8 @@ export const winPosts = [
     result: "1st place",
     description:
       "Real-time road hazard detection with computer vision and geotagged reports.",
-    detail: null,
-    technologies: [],
     author: "Drexel University School of Engineering",
+    awardUrl: null,
     embedUrl:
       "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7337936873501192192?collapsed=1",
     postUrl:
@@ -18,33 +17,30 @@ export const winPosts = [
   {
     id: "saving-spree",
     project: "SavingSpree",
-    event: "DragonHacks",
-    result: "Winning team",
+    event: "DragonHacks 11",
+    result: "Best Use of Auth0",
     description:
       "A budgeting app that finds savings opportunities around calendar events.",
-    detail:
-      "We built an Android and iOS app with React and Expo, using spending predictions to suggest time for budget-friendly habits.",
-    technologies: ["React / Expo", "Flask", "Machine learning"],
     author: "Kai Thompson",
+    awardUrl: "https://devpost.com/software/savingspree",
     embedUrl: null,
     postUrl:
       "https://www.linkedin.com/feed/update/urn:li:activity:7323708122835947521/",
-    linkLabel: "My LinkedIn repost",
+    linkLabel: "LinkedIn post",
   },
   {
     id: "syncsphere",
     project: "SyncSphere Console",
-    event: "Philly CodeFest",
-    result: "Winning team",
+    event: "Philly Codefest 2025",
+    result: "Wexford: Event & Activity Aggregator",
     description:
       "An AI-assisted event planner that brings distributed teams together.",
-    detail:
-      "Our project recommended shared events for remote teams, combining employee clustering with event search and machine learning.",
-    technologies: ["DBSCAN", "SerpAPI", "XGBoost"],
     author: "Kai Thompson",
+    awardUrl:
+      "https://drexel.edu/cci/stories/ai-takes-center-stage-at-drexel-ccis-philly-codefest-with-97-project-submissions/",
     embedUrl: null,
     postUrl:
       "https://www.linkedin.com/feed/update/urn:li:activity:7306485945883590656/",
-    linkLabel: "My LinkedIn repost",
+    linkLabel: "LinkedIn post",
   },
 ] as const;
