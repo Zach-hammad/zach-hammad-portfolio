@@ -1591,9 +1591,6 @@ details[open] .detail-symbol::after {
 .resume-actions .text-link {
   font-size: 14px;
 }
-.resume-links {
-  margin-top: 0;
-}
 .resume-meta a {
   display: inline-flex;
   align-items: center;
@@ -1611,9 +1608,6 @@ details[open] .detail-symbol::after {
 .resume-layout {
   margin-top: 32px;
 }
-.resume-section {
-  scroll-margin-top: 24px;
-}
 .resume-section + .resume-section {
   margin-top: 40px;
 }
@@ -1627,6 +1621,11 @@ details[open] .detail-symbol::after {
   letter-spacing: -0.02em;
   color: var(--accent);
   margin-bottom: 24px;
+  scroll-margin-top: 24px;
+}
+.resume-section h2:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
 }
 .resume-section h2::after {
   content: "";
@@ -1637,6 +1636,10 @@ details[open] .detail-symbol::after {
 }
 .resume-entry {
   margin-top: 28px;
+}
+.resume-entry + .resume-entry {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
 }
 .resume-section h2 + .resume-entry {
   margin-top: 0;
@@ -1706,7 +1709,9 @@ details[open] .detail-symbol::after {
   gap: 8px 24px;
 }
 .resume-skill + .resume-skill {
-  margin-top: 16px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
 }
 .resume-skill h3 {
   font-size: 15px;
@@ -1743,9 +1748,15 @@ details[open] .detail-symbol::after {
   }
   .resume-mobile-contents {
     display: block;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
+    position: sticky;
+    top: 81px;
+    z-index: 20;
+    padding-block: 8px;
     border-bottom: 1px solid var(--line);
+    background: var(--page);
+  }
+  .resume-section h2 {
+    scroll-margin-top: 64px;
   }
   .resume-mobile-contents summary {
     display: flex;
@@ -1765,6 +1776,8 @@ details[open] .detail-symbol::after {
   }
   .resume-mobile-contents nav {
     padding-top: 8px;
+    max-height: min(18rem, calc(100dvh - 180px));
+    overflow-y: auto;
   }
   .resume-mobile-contents a {
     display: flex;
@@ -1776,6 +1789,9 @@ details[open] .detail-symbol::after {
   }
   .resume-mobile-contents a:hover {
     background: #e9eee6;
+  }
+  .resume-mobile-contents a:focus-visible {
+    outline-offset: -2px;
   }
   .shell {
     width: calc(100% - 64px);
@@ -2064,8 +2080,8 @@ details[open] .detail-symbol::after {
     font-size: 13px;
     margin-top: 12px;
   }
-  .resume-links {
-    margin-top: 0;
+  .resume-mobile-contents {
+    top: 71px;
   }
   .resume-summary {
     font-size: 16px;

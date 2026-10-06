@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, ChevronDown, Download } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import TopBar from "@/components/TopBar";
+import ResumeSectionMenu from "@/components/ResumeSectionMenu";
 import { contact } from "@/data/contact";
 import { resume } from "@/data/resume";
 import { site } from "@/data/site";
@@ -63,14 +64,6 @@ export default function ResumePage() {
             <ul>{sectionLinks}</ul>
           </nav>
           <article className="resume-document" aria-label={`${resume.name} resume`}>
-            <details className="resume-mobile-contents">
-              <summary>
-                Jump to section <ChevronDown size={16} aria-hidden="true" />
-              </summary>
-              <nav aria-label="Resume sections">
-                <ul>{sectionLinks}</ul>
-              </nav>
-            </details>
             <header className="resume-header">
               <p className="eyebrow">Résumé</p>
               <div className="resume-heading">
@@ -89,8 +82,6 @@ export default function ResumePage() {
                     )}
                   </span>
                 ))}
-              </div>
-              <div className="resume-meta resume-links">
                 <a href={site.url}>{new URL(site.url).hostname}</a>
                 <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
                   LinkedIn <ArrowUpRight size={14} aria-hidden="true" />
@@ -101,9 +92,10 @@ export default function ResumePage() {
               </div>
               <p className="resume-summary">{resume.summary}</p>
             </header>
+            <ResumeSectionMenu>{sectionLinks}</ResumeSectionMenu>
             <div className="resume-layout">
               <section className="resume-section" aria-labelledby="skills-title">
-                <h2 id="skills-title">Technical Skills</h2>
+                <h2 id="skills-title" tabIndex={-1}>Technical Skills</h2>
                 {resume.skillGroups.map((group) => (
                   <div className="resume-skill" key={group.label}>
                     <h3>{group.label}</h3>
@@ -112,7 +104,7 @@ export default function ResumePage() {
                 ))}
               </section>
               <section className="resume-section" aria-labelledby="experience-title">
-                <h2 id="experience-title">Professional Experience</h2>
+                <h2 id="experience-title" tabIndex={-1}>Professional Experience</h2>
                 {resume.experience.map((experience) => (
                   <article key={experience.organization} className="resume-entry">
                     <header>
@@ -131,7 +123,7 @@ export default function ResumePage() {
                 ))}
               </section>
               <section className="resume-section" aria-labelledby="projects-title">
-                <h2 id="projects-title">Projects</h2>
+                <h2 id="projects-title" tabIndex={-1}>Projects</h2>
                 {resume.projects.map((project) => (
                   <article key={project.name} className="resume-entry">
                     <h3>{project.name}</h3>
@@ -141,7 +133,7 @@ export default function ResumePage() {
                 ))}
               </section>
               <section className="resume-section" aria-labelledby="education-title">
-                <h2 id="education-title">Education</h2>
+                <h2 id="education-title" tabIndex={-1}>Education</h2>
                 <div className="resume-entry">
                   <header>
                     <div className="resume-entry-heading">
@@ -156,7 +148,7 @@ export default function ResumePage() {
                 </div>
               </section>
               <section className="resume-section" aria-labelledby="certifications-title">
-                <h2 id="certifications-title">Certifications</h2>
+                <h2 id="certifications-title" tabIndex={-1}>Certifications</h2>
                 {resume.certifications.map((certification) => (
                   <article key={certification.name} className="resume-entry">
                     <header>
