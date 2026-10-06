@@ -155,6 +155,15 @@ export default function ResumePage() {
                       <h3>{certification.name}</h3>
                       <p className="resume-period">{certification.period}</p>
                     </header>
+                    <a
+                      href={certification.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-link"
+                      aria-label={`View ${certification.name} certificate`}
+                    >
+                      View certificate <ArrowUpRight size={16} aria-hidden="true" />
+                    </a>
                   </article>
                 ))}
               </section>

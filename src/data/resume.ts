@@ -114,6 +114,11 @@ export const resume = {
     gpa: "3.69",
   },
   certifications: [
-    { name: "Neo4j Certified Professional", period: "Aug 2026" },
+    {
+      name: "Neo4j Certified Professional",
+      period: "Aug 2026",
+      credentialUrl:
+        "https://graphacademy.neo4j.com/c/d7b365c4-491e-42fa-a23f-d2f623f111a2/",
+    },
   ],
 } as const;
