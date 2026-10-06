@@ -1088,7 +1088,13 @@ details[open] .detail-symbol::after {
 .win-posts-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 24px;
+}
+.win-posts-links {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
 }
 .win-post {
   display: flex;
@@ -1097,11 +1103,7 @@ details[open] .detail-symbol::after {
   border: 1px solid var(--line);
   background: var(--surface);
 }
-.win-post:first-child {
-  grid-row: span 2;
-}
 .win-post-copy {
-  flex: 1;
   padding: 24px;
 }
 .win-post-copy .eyebrow {
@@ -1119,6 +1121,23 @@ details[open] .detail-symbol::after {
   font-size: 14px;
   line-height: 1.7;
   color: var(--muted);
+}
+.win-post-compact .win-post-copy {
+  padding: 20px;
+}
+.win-post-compact h3 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+.win-post-award {
+  margin-top: 10px;
+  color: var(--brass);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.win-post-compact .win-post-description {
+  margin-top: 10px;
 }
 .win-post-embed {
   display: block;
@@ -1139,15 +1158,24 @@ details[open] .detail-symbol::after {
   margin-top: 4px;
   color: var(--accent);
 }
+.win-post-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.win-post-compact .win-post-source {
+  padding: 0 20px 20px;
+}
+.win-post-compact .text-link {
+  margin-top: 0;
+  font-size: 13px;
+}
 @media (max-width: 767px) {
   .win-posts {
     padding-bottom: 64px;
   }
   .win-posts-grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .win-post:first-child {
-    grid-row: auto;
   }
   .win-post-copy,
   .win-post-source {
