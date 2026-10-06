@@ -3,6 +3,7 @@ import IntroSection from "@/components/sections/IntroSection";
 import ProofPillarsSection from "@/components/sections/ProofPillarsSection";
 import FlagshipCaseStudy from "@/components/sections/FlagshipCaseStudy";
 import ProductionProofSection from "@/components/sections/ProductionProofSection";
+import WinPostsSection from "@/components/sections/WinPostsSection";
 import FoundationsSection from "@/components/sections/FoundationsSection";
 import TopBar from "@/components/TopBar";
 import PersonalSection from "@/components/sections/PersonalSection";
@@ -22,6 +23,7 @@ export default function Home() {
           <FlagshipCaseStudy />
           <ProductionProofSection />
         </section>
+        <WinPostsSection />
         <FoundationsSection />
         <PersonalSection />
       </main>
